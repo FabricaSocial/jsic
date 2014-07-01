@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -20,6 +21,7 @@ public class Naturalidade extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
+  @OneToMany(mapped="id")
   private Integer id;
 
   @ManyToOne

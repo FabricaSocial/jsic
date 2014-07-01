@@ -8,9 +8,12 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@Entity
+@Table(name="Endereco")
 public class Endereco extends Model
 {
   private static final long serialVersionUID = 1L;
@@ -18,6 +21,7 @@ public class Endereco extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
+  @OneToMany(mapped="id")
   private Integer id;
 
   @Column(name="cep")
@@ -29,7 +33,7 @@ public class Endereco extends Model
   @Column(name="bairro")
   private String bairro;
 
-  @OneToMany
+  @ManyToOne
   @JoinColumn(name="cidade_id", referencedColumnName="id")
   private Cidade cidade;
 

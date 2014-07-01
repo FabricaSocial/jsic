@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@Entity
+@Table(name="Cidade")
 public class Cidade extends Model
 {
   private static final long serialVersionUID = 1L;
