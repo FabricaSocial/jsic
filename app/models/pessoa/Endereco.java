@@ -37,6 +37,13 @@ public class Endereco extends Model
   @JoinColumn(name="cidade_id", referencedColumnName="id")
   private Cidade cidade;
 
+  public Endereco()
+  {
+    this.cep = 0;
+    this.endereco = "";
+    this.bairro = "";
+    this.cidade = new Cidade();
+  }
 
   public Integer getId() { return this.id; }
   public BitInteger getCep() { return this.cep; }

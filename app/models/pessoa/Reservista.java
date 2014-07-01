@@ -43,11 +43,21 @@ public class Reservista extends Model
   @JoinColumn(name="pessoa_id", referencedColumnName="id")
   private Pessoa pessoa;
 
+  public Reservista()
+  {
+    this.certificado = 0;
+    this.serie = 0;
+    this.orgao = "";
+    this.dispensaIncorporacao = 0;
+    this.unidadeAlistamento = "";
+    this.pessoa = new Pessoa();
+  }
+
   public Integer getId() { return this.id; }
   public BigInteger getCertificado() { return this.certificado; }
   public void setCertificado(BigInteger certificado) { this.certificado = certificado; }
-  public BigInteger getErie() { return this.erie; }
-  public void setErie(BigInteger erie) { this.erie = erie; }
+  public BigInteger getSerie() { return this.serie; }
+  public void setSerie(BigInteger serie) { this.serie = serie; }
   public String getOrgao() { return this.orgao; }
   public void setOrgao(String orgao) { this.orgao = orgao; }
   public BigInteger getDispensaIncorporacao() { return this.dispensaIncorporacao; }

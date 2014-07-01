@@ -68,6 +68,21 @@ public class Pessoa extends Model
   @JoinColumn(name="naturalidade_id", referencedColumnName="id")
   private Naturalidade naturalidade;
 
+  public Pessoa()
+  {
+    this.cpf = 0;
+    this.nome = "";
+    this.dataNascimento = new Date();
+    this.sexo = false;
+    this.filhos = false;
+    this.foto = "";
+    this.etnia = new Etnia();
+    this.tipoIdentidade = new TipoIdentidade();
+    this.estadoCivil = new EstadoCivil();
+    this.nacionalidade = new Nacionalidade();
+    this.naturalidade = new Naturalidade();
+  }
+
   public Integer getId() { return this.id; }
   public void setId(Integer id) { this.id = id; }
   public BigInteger getCpf() { return this.cpf; }
@@ -77,7 +92,7 @@ public class Pessoa extends Model
   public Date getDataNascimento() { return this.dataNascimento; }
   public void setDataNascimento(Date dataNascimento) { this.dataNascimento = dataNascimento; }
   public Boolean getSexo() { return this.sexo; }
-  public void setSexo(Boolean sexo) { this.sexo = sexo; }
+  public void setwexo(Boolean sexo) { this.sexo = sexo; }
   public Boolean getFilhos() { return this.filhos; }
   public void setFilhos(Boolean filhos) { this.filhos = filhos; }
   public String getFoto() { return this.foto; }

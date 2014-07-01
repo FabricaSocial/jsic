@@ -36,6 +36,12 @@ public class Naturalidade extends Model
   @JoinColumn(name="uf_id", referencedColumnName="id")
   private UF uf;
 
+  public Naturalidade()
+  {
+    this.pais = new Pais();
+    this.cidade = new Cidade();
+    this.uf = new UF();
+  }
 
   public Integer getId() { return this.id; }
   public Pais getPais() { return this.pais; }

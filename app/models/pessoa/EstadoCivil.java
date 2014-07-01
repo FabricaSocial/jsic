@@ -25,6 +25,10 @@ public class EstadoCivil extends Model
   @Column(name="descricao")
   private String descricao;
 
+  public EstadoCivil()
+  {
+    this.descricao = "";
+  }
 
   public Integer getId() { return this.id; }
   public String getDescricao() { return this.descricao; }
