@@ -2,17 +2,25 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
+@Table(name="CategoriaCNH")
 public class CategoriaCNH extends Model
 {
   private static final long serialVersionUID = 1L;
 
   @Id
+  @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
 
+  @Column(name="categoria")
   private String categoria;
 
   public CategoriaCNH()

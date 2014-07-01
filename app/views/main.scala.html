@@ -2,14 +2,53 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-br" class="no-js">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+        <link rel="stylesheet" media="screen"
+          href="@routes.Assets.at("foundation/css/foundation.css")">
     </head>
     <body>
+        <br>
+        <div class="row">
+          <div class="large-12" align="center">
+            <img src="@routes.Assets.at("images/gdf-logo.png")" alt="Logo GDF"
+              width="10%" align="left">
+
+            <div align="right">
+              <br><h2><b>Fábrica Social</b></h2>
+              <h4>Centro de Capacitação Profissional - CIAS</h4>
+            </div><br>
+            <hr />
+          </div>
+        </div>
         @content
+
+        <div id="modal_erro" class="reveal-modal small" data-reveal>
+          <h2>Ops...</h2>
+          <p class="lead">Alguma coisa aconteceu</p>
+          <p><b></b></p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <div id="modal-sucesso" class="reveal-modal small" data-reveal>
+          <h2>Sucesso!!</h2>
+          <p class="lead">Operação realizada com sucesso!</p>
+          <p><b></b></p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <script type="text/javascript"
+          src="@routes.Assets.at("foundation/js/vendor/modernizr.js")"></script>
+        <script type="text/javascript"
+          src="@routes.Assets.at("foundation/js/vendor/jquery.js")"></script>
+        <script type="text/javascript"
+          src="@routes.Assets.at("foundation/js/foundation.min.js")"></script>
+
+        <script type="text/javascript">
+          $(document).foundation();
+        </script>
     </body>
 </html>
