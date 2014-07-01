@@ -47,6 +47,11 @@ public class CarteiraTrabalho extends Model
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getCtps();
+  }
+
   public Model.Finder<Integer,CarteiraTrabalho> find =
     new Model.Finder<Integer,CarteiraTrabalho>(Integer.class,CarteiraTrabalho.class);
 }

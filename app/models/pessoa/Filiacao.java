@@ -48,6 +48,11 @@ public class Filiacao extends Model
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getNome();
+  }
+
   public Model.Finder<Integer,Filiacao> find =
     new Model.Finder<Integer,Filiacao>(Integer.class,Filiacao.class);
 }

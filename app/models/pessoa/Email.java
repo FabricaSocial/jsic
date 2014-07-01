@@ -36,6 +36,11 @@ public class Email extends Model
   public Pessoa getPessoa() { return _pessoa; }
   public void setPessoa(Pessoa pessoa) { _pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getEndereco();
+  }
+
   public Model.Finder<Integer,Email> find =
     new Model.Finder<Integer,Email>(Integer.class,Email.class);
 }

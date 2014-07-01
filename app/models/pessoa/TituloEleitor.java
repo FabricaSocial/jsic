@@ -61,6 +61,11 @@ public class TituloEleitor extends Model
   public Cidade getCidade() { return this.cidade; }
   public void setCidade(Cidade cidade) { this.cidade = cidade; }
 
+  public String toString()
+  {
+    return getTitulo();
+  }
+
   public Model.Finder<Integer,TituloEleitor> find =
     new Model.Finder<Integer,TituloEleitor>(Integer.class,TituloEleitor.class);
 }

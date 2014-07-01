@@ -49,7 +49,7 @@ public class Cidade extends Model
 
   public String toString()
   {
-    return getNome() + ", " + getUF().toString();
+    return getNome();
   }
 
   public Model.Finder<Integer,Cidade> find =

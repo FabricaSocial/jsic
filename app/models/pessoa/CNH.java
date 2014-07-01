@@ -68,6 +68,11 @@ public class CNH extends Model
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getNumero();
+  }
+
   public Model.Finder<Integer,CNH> find =
     new Model.Finder<Integer,CNH>(Integer.class,CNH.class);
 }

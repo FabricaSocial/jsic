@@ -57,8 +57,7 @@ public class Endereco extends Model
 
   public String toString()
   {
-    return getEndereco() + ", " + getBairro() + ", " getCep() + ", " +
-       getCidade().toString();
+    return getEndereco() + ", " + getBairro() + ", " getCep();
   }
 
   public Model.Finder<Integer,Endereco> find =

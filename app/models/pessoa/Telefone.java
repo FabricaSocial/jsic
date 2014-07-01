@@ -49,6 +49,11 @@ public class Telefone extends Model
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getNumero();
+  }
+
   public Model.Finder<Integer,Telefone> find =
     new Model.Finder<Integer,Telefone>(Integer.class,Telefone.class);
 }

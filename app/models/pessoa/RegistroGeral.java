@@ -61,6 +61,11 @@ public class RegistroGeral extends Model
   public UF getUF() { return this.uf; }
   public void setUF(UF uf) { this.uf = uf; }
 
+  public String toString()
+  {
+    return getRg();
+  }
+
   public Model.Finder<Integer,RegistroGeral> find =
     new Model.Finder<Integer,RegistroGeral>(Integer.class,RegistroGeral.class);
 }

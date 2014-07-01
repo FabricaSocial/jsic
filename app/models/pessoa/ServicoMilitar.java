@@ -49,6 +49,11 @@ public class ServicoMilitar extends Model
   public UF getUF() { return this.uf; }
   public void setUF(UF uf) { this.uf = uf; }
 
+  public String toString()
+  {
+    return getAno() + ", " + getPessoa().toString();
+  }
+
   public Model.Finder<Integer,ServicoMilitar> find =
     new Model.Finder<Integer,ServicoMilitar>(Integer.class,ServicoMilitar.class);
 }

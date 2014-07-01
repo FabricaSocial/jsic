@@ -67,6 +67,11 @@ public class Reservista extends Model
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
 
+  public String toString()
+  {
+    return getCertificado();
+  }
+
   public Model.Finder<Integer,Reservista> find =
     new Model.Finder<Integer,Reservista>(Integer.class,Reservista.class);
 }

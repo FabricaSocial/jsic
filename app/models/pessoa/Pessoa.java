@@ -112,8 +112,7 @@ public class Pessoa extends Model
 
   public String toString()
   {
-    return getNome() + ", " + getCpf() + ", " + getDataNascimento() +
-      " - " + getNaturalidade() + ", " + getNacionalidade();
+    return getNome();
   }
 
   public Model.Finder<Integer,Pessoa> find =
