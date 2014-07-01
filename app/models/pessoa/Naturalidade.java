@@ -21,7 +21,6 @@ public class Naturalidade extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @OneToMany(mapped="id")
   private Integer id;
 
   @ManyToOne

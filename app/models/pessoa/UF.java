@@ -20,7 +20,6 @@ public class UF extends Model
 
   @Id
   @Column(name="id")
-  @OneToMany(mapped="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
   public Integer id;
 

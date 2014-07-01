@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -36,7 +38,7 @@ public class Telefone extends Model
 
   public Telefone()
   {
-    this.numero = 0;
+    this.numero = BigInteger.valueOf(0);
     this.tipoTelefone = new TipoTelefone();
     this.pessoa = new Pessoa();
   }
@@ -51,7 +53,7 @@ public class Telefone extends Model
 
   public String toString()
   {
-    return getNumero();
+    return getNumero().toString();
   }
 
   public Model.Finder<Integer,Telefone> find =

@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -35,7 +37,7 @@ public class Filiacao extends Model
 
   public Filiacao()
   {
-    this.cpf = 0;
+    this.cpf = BigInteger.valueOf(0);
     this.nome = "";
     this.pessoa = new Pessoa();
   }

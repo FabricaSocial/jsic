@@ -18,7 +18,6 @@ public class Pais extends Model
 
   @Id
   @Column(name="id")
-  @OneToMany(mapped="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
   public Integer id;
 

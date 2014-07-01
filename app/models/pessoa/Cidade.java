@@ -20,7 +20,6 @@ public class Cidade extends Model
 
   @Id
   @Column(name="id")
-  @OneToMany(mapped="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
 

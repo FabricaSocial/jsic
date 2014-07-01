@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,6 @@ public class Pessoa extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @OneToMany(mapped="id")
   private Integer id;
 
   @Column(name="cpf")
@@ -70,7 +70,7 @@ public class Pessoa extends Model
 
   public Pessoa()
   {
-    this.cpf = 0;
+    this.cpf = BigInteger.valueOf(0);
     this.nome = "";
     this.dataNascimento = new Date();
     this.sexo = false;

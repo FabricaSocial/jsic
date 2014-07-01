@@ -19,7 +19,6 @@ public class EstadoCivil extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @OneToMany(mapped="id")
   private Integer id;
 
   @Column(name="descricao")

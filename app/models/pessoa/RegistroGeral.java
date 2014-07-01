@@ -2,6 +2,10 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -42,7 +46,7 @@ public class RegistroGeral extends Model
 
   public RegistroGeral()
   {
-    this.rg = 0;
+    this.rg = BigInteger.valueOf(0);
     this.orgaoExpedidor = "";
     this.dataExpedicao = new Date();
     this.pessoa = new Pessoa();
@@ -63,7 +67,7 @@ public class RegistroGeral extends Model
 
   public String toString()
   {
-    return getRg();
+    return getRg().toString();
   }
 
   public Model.Finder<Integer,RegistroGeral> find =

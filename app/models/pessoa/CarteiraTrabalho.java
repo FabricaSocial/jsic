@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -34,7 +36,7 @@ public class CarteiraTrabalho extends Model
 
   public CarteiraTrabalho()
   {
-    this.ctps = 0;
+    this.ctps = BigInteger.valueOf(0);
     this.serie = 0;
     this.pessoa = new Pessoa();
   }
@@ -49,7 +51,7 @@ public class CarteiraTrabalho extends Model
 
   public String toString()
   {
-    return getCtps();
+    return getCtps().toString();
   }
 
   public Model.Finder<Integer,CarteiraTrabalho> find =

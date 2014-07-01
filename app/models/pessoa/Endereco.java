@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -21,11 +23,10 @@ public class Endereco extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @OneToMany(mapped="id")
   private Integer id;
 
   @Column(name="cep")
-  private BitInteger cep;
+  private BigInteger cep;
 
   @Column(name="endereco")
   private String endereco;
@@ -39,15 +40,15 @@ public class Endereco extends Model
 
   public Endereco()
   {
-    this.cep = 0;
+    this.cep = BigInteger.valueOf(0);
     this.endereco = "";
     this.bairro = "";
     this.cidade = new Cidade();
   }
 
   public Integer getId() { return this.id; }
-  public BitInteger getCep() { return this.cep; }
-  public void setCep(BitInteger cep) { this.cep = cep; }
+  public BigInteger getCep() { return this.cep; }
+  public void setCep(BigInteger cep) { this.cep = cep; }
   public String getEndereco() { return this.endereco; }
   public void setEndereco(String endereco) { this.endereco = endereco; }
   public String getBairro() { return this.bairro; }
@@ -57,7 +58,7 @@ public class Endereco extends Model
 
   public String toString()
   {
-    return getEndereco() + ", " + getBairro() + ", " getCep();
+    return getEndereco() + ", " + getBairro() + ", " + getCep();
   }
 
   public Model.Finder<Integer,Endereco> find =

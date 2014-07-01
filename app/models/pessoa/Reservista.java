@@ -2,7 +2,7 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
-import java.util.Date;
+import java.math.BigInteger;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -45,10 +45,10 @@ public class Reservista extends Model
 
   public Reservista()
   {
-    this.certificado = 0;
-    this.serie = 0;
+    this.certificado = BigInteger.valueOf(0);
+    this.serie = BigInteger.valueOf(0);
     this.orgao = "";
-    this.dispensaIncorporacao = 0;
+    this.dispensaIncorporacao = BigInteger.valueOf(0);
     this.unidadeAlistamento = "";
     this.pessoa = new Pessoa();
   }
@@ -69,7 +69,7 @@ public class Reservista extends Model
 
   public String toString()
   {
-    return getCertificado();
+    return getCertificado().toString();
   }
 
   public Model.Finder<Integer,Reservista> find =

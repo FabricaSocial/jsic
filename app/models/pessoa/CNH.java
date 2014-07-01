@@ -2,6 +2,10 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -46,7 +50,7 @@ public class CNH extends Model
 
   public CNH()
   {
-    this.numero = 0;
+    this.numero = BigInteger.valueOf(0);
     this.dataEmissao = new Date();
     this.validade = new Date();
     this.uf = new UF();
@@ -70,7 +74,7 @@ public class CNH extends Model
 
   public String toString()
   {
-    return getNumero();
+    return getNumero().toString();
   }
 
   public Model.Finder<Integer,CNH> find =

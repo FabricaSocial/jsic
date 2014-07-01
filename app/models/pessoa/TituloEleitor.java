@@ -2,6 +2,8 @@ package models.pessoa;
 
 import play.db.ebean.Model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -42,7 +44,7 @@ public class TituloEleitor extends Model
 
   public TituloEleitor()
   {
-    this.titulo = 0;
+    this.titulo = BigInteger.valueOf(0);
     this.zona = 0;
     this.secao = 0;
     this.pessoa = new Pessoa();
@@ -63,7 +65,7 @@ public class TituloEleitor extends Model
 
   public String toString()
   {
-    return getTitulo();
+    return getTitulo().toString();
   }
 
   public Model.Finder<Integer,TituloEleitor> find =

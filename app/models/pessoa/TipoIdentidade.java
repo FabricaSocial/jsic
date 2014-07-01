@@ -19,7 +19,6 @@ public class TipoIdentidade extends Model
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @OneToMany(mapped="id")
   public Integer id;
 
   @Column(name="descricao")
