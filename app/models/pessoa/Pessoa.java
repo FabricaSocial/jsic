@@ -100,4 +100,7 @@ public class Pessoa extends Model
     return getNome() + ", " + getCpf() + ", " + getDataNascimento() +
       " - " + getNaturalidade() + ", " + getNacionalidade();
   }
+
+  public Model.Finder<Integer,Pessoa> find =
+    new Model.Finder<Integer,Pessoa>(Integer.class,Pessoa.class);
 }

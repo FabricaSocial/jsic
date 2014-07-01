@@ -51,4 +51,7 @@ public class Cidade extends Model
   {
     return getNome() + ", " + getUF().toString();
   }
+
+  public Model.Finder<Integer,Cidade> find =
+    new Model.Finder<Integer,Cidade>(Integer.class,Cidade.class);
 }
