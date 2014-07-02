@@ -68,6 +68,6 @@ public class TituloEleitor extends Model
     return getTitulo().toString();
   }
 
-  public Model.Finder<Integer,TituloEleitor> find =
-    new Model.Finder<Integer,TituloEleitor>(Integer.class,TituloEleitor.class);
+  public static Finder<Integer,TituloEleitor> find =
+    new Finder<Integer,TituloEleitor>(Integer.class,TituloEleitor.class);
 }

@@ -70,6 +70,6 @@ public class RegistroGeral extends Model
     return getRg().toString();
   }
 
-  public Model.Finder<Integer,RegistroGeral> find =
-    new Model.Finder<Integer,RegistroGeral>(Integer.class,RegistroGeral.class);
+  public static Finder<Integer,RegistroGeral> find =
+    new Finder<Integer,RegistroGeral>(Integer.class,RegistroGeral.class);
 }

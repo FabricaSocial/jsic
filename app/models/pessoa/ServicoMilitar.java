@@ -54,6 +54,6 @@ public class ServicoMilitar extends Model
     return getAno() + ", " + getPessoa().toString();
   }
 
-  public Model.Finder<Integer,ServicoMilitar> find =
-    new Model.Finder<Integer,ServicoMilitar>(Integer.class,ServicoMilitar.class);
+  public static Finder<Integer,ServicoMilitar> find =
+    new Finder<Integer,ServicoMilitar>(Integer.class,ServicoMilitar.class);
 }

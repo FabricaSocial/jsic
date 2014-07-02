@@ -77,6 +77,6 @@ public class CNH extends Model
     return getNumero().toString();
   }
 
-  public Model.Finder<Integer,CNH> find =
-    new Model.Finder<Integer,CNH>(Integer.class,CNH.class);
+  public static Finder<Integer,CNH> find =
+    new Finder<Integer,CNH>(Integer.class,CNH.class);
 }

@@ -51,6 +51,6 @@ public class Cidade extends Model
     return getNome();
   }
 
-  public Model.Finder<Integer,Cidade> find =
-    new Model.Finder<Integer,Cidade>(Integer.class,Cidade.class);
+  public static Finder<Integer,Cidade> find =
+    new Finder<Integer,Cidade>(Integer.class,Cidade.class);
 }

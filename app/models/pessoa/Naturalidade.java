@@ -55,6 +55,6 @@ public class Naturalidade extends Model
     return getCidade().toString();
   }
 
-  public Model.Finder<Integer,Naturalidade> find =
-    new Model.Finder<Integer,Naturalidade>(Integer.class,Naturalidade.class);
+  public static Finder<Integer,Naturalidade> find =
+    new Finder<Integer,Naturalidade>(Integer.class,Naturalidade.class);
 }

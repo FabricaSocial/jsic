@@ -49,6 +49,6 @@ public class Nacionalidade extends Model
     return getDescricao();
   }
 
-  public Model.Finder<Integer,Nacionalidade> find =
-    new Model.Finder<Integer,Nacionalidade>(Integer.class,Nacionalidade.class);
+  public static Finder<Integer,Nacionalidade> find =
+    new Finder<Integer,Nacionalidade>(Integer.class,Nacionalidade.class);
 }

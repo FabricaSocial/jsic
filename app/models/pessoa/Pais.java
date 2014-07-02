@@ -49,6 +49,6 @@ public class Pais extends Model
     return getNome();
   }
 
-  public Model.Finder<Integer,Pais> find =
-    new Model.Finder<Integer,Pais>(Integer.class,Pais.class);
+  public static Finder<Integer,Pais> find =
+    new Finder<Integer,Pais>(Integer.class,Pais.class);
 }

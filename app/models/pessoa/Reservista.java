@@ -72,6 +72,6 @@ public class Reservista extends Model
     return getCertificado().toString();
   }
 
-  public Model.Finder<Integer,Reservista> find =
-    new Model.Finder<Integer,Reservista>(Integer.class,Reservista.class);
+  public static Finder<Integer,Reservista> find =
+    new Finder<Integer,Reservista>(Integer.class,Reservista.class);
 }

@@ -47,6 +47,6 @@ public class Email extends Model
     return getEndereco();
   }
 
-  public Model.Finder<Integer,Email> find =
-    new Model.Finder<Integer,Email>(Integer.class,Email.class);
+  public static Finder<Integer,Email> find =
+    new Finder<Integer,Email>(Integer.class,Email.class);
 }

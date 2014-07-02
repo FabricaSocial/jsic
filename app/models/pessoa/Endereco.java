@@ -61,6 +61,6 @@ public class Endereco extends Model
     return getEndereco() + ", " + getBairro() + ", " + getCep();
   }
 
-  public Model.Finder<Integer,Endereco> find =
-    new Model.Finder<Integer,Endereco>(Integer.class,Endereco.class);
+  public static Finder<Integer,Endereco> find =
+    new Finder<Integer,Endereco>(Integer.class,Endereco.class);
 }

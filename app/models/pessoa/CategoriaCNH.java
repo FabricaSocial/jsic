@@ -48,6 +48,6 @@ public class CategoriaCNH extends Model
     return getCategoria();
   }
 
-  public Model.Finder<Integer,CategoriaCNH> find =
-    new Model.Finder<Integer,CategoriaCNH>(Integer.class,CategoriaCNH.class);
+  public static Finder<Integer,CategoriaCNH> find =
+    new Finder<Integer,CategoriaCNH>(Integer.class,CategoriaCNH.class);
 }

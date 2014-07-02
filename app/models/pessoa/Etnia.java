@@ -49,6 +49,6 @@ public class Etnia extends Model
     return getDescricao();
   }
 
-  public Model.Finder<Integer,Etnia> find =
-    new Model.Finder<Integer,Etnia>(Integer.class,Etnia.class);
+  public static Finder<Integer,Etnia> find =
+    new Finder<Integer,Etnia>(Integer.class,Etnia.class);
 }

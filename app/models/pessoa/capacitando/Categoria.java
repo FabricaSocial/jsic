@@ -6,49 +6,37 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name="TipoIdentidade")
-public class TipoIdentidade extends Model
+@Table(name="Categoria")
+public class Categoria extends Model
 {
   private static final long serialVersionUID = 1L;
 
   @Id
   @Column(name="id")
   @GeneratedValue(strategy=GenerationType.AUTO)
-  public Integer id;
+  private Integer id;
 
   @Column(name="descricao")
-  public String descricao;
+  private String descricao;
 
-  public TipoIdentidade()
+  public Categoria()
   {
     this.descricao = "";
   }
 
-  public Integer getId()
-  {
-    return this.id;
-  }
-
-  public String getDescricao()
-  {
-    return this.descricao;
-  }
-
-  public void setDescricao(String descricao)
-  {
-    this.descricao = descricao;
-  }
+  public Integer getId() { return this.id; }
+  public String getDescricao() { return this.descricao; }
+  public void setDescricao(String descricao) { this.descricao = descricao; }
 
   public String toString()
   {
     return getDescricao();
   }
 
-  public static Finder<Integer,TipoIdentidade> find =
-    new Finder<Integer,TipoIdentidade>(Integer.class,TipoIdentidade.class);
+  public static Finder<Integer,Categoria> find =
+    new Finder<Integer,Categoria>(Integer.class,Categoria.class);
 }

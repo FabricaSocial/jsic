@@ -56,6 +56,6 @@ public class Telefone extends Model
     return getNumero().toString();
   }
 
-  public Model.Finder<Integer,Telefone> find =
-    new Model.Finder<Integer,Telefone>(Integer.class,Telefone.class);
+  public static Finder<Integer,Telefone> find =
+    new Finder<Integer,Telefone>(Integer.class,Telefone.class);
 }

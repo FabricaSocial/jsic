@@ -80,6 +80,6 @@ public class UF extends Model
     return getNome() + ", " + getAbreviacao() + " - " + getPais().toString();
   }
 
-  public Model.Finder<Integer,UF> find =
-    new Model.Finder<Integer,UF>(Integer.class,UF.class);
+  public static Finder<Integer,UF> find =
+    new Finder<Integer,UF>(Integer.class,UF.class);
 }

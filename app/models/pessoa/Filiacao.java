@@ -55,6 +55,6 @@ public class Filiacao extends Model
     return getNome();
   }
 
-  public Model.Finder<Integer,Filiacao> find =
-    new Model.Finder<Integer,Filiacao>(Integer.class,Filiacao.class);
+  public static Finder<Integer,Filiacao> find =
+    new Finder<Integer,Filiacao>(Integer.class,Filiacao.class);
 }

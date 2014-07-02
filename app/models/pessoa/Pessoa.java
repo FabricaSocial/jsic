@@ -115,6 +115,6 @@ public class Pessoa extends Model
     return getNome();
   }
 
-  public Model.Finder<Integer,Pessoa> find =
-    new Model.Finder<Integer,Pessoa>(Integer.class,Pessoa.class);
+  public static Finder<Integer,Pessoa> find =
+    new Finder<Integer,Pessoa>(Integer.class,Pessoa.class);
 }

@@ -38,6 +38,6 @@ public class EstadoCivil extends Model
     return getDescricao();
   }
 
-  public Model.Finder<Integer,EstadoCivil> find =
-    new Model.Finder<Integer,EstadoCivil>(Integer.class,EstadoCivil.class);
+  public static Finder<Integer,EstadoCivil> find =
+    new Finder<Integer,EstadoCivil>(Integer.class,EstadoCivil.class);
 }

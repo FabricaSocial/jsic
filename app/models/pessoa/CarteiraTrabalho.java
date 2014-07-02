@@ -54,6 +54,6 @@ public class CarteiraTrabalho extends Model
     return getCtps().toString();
   }
 
-  public Model.Finder<Integer,CarteiraTrabalho> find =
-    new Model.Finder<Integer,CarteiraTrabalho>(Integer.class,CarteiraTrabalho.class);
+  public static Finder<Integer,CarteiraTrabalho> find =
+    new Finder<Integer,CarteiraTrabalho>(Integer.class,CarteiraTrabalho.class);
 }

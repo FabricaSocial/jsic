@@ -49,6 +49,6 @@ public class TipoTelefone extends Model
     return getDescricao();
   }
 
-  public Model.Finder<Integer,TipoTelefone> find =
-    new Model.Finder<Integer,TipoTelefone>(Integer.class,TipoTelefone.class);
+  public static Finder<Integer,TipoTelefone> find =
+    new Finder<Integer,TipoTelefone>(Integer.class,TipoTelefone.class);
 }

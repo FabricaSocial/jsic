@@ -9,46 +9,48 @@
         <title>@title</title>
         <link rel="stylesheet" media="screen"
           href="@routes.Assets.at("foundation/css/foundation.css")">
+
     </head>
     <body>
-        <br>
-        <div class="row">
-          <div class="large-12" align="center">
-            <img src="@routes.Assets.at("images/gdf-logo.png")" alt="Logo GDF"
-              width="10%" align="left">
+      <br>
+      <div class="row">
+        <div class="large-12" align="center">
+          <img src="@routes.Assets.at("images/gdf-logo.png")" alt="Logo GDF"
+            width="10%" align="left">
 
-            <div align="right">
-              <br><h2><b>Fábrica Social</b></h2>
-              <h4>Centro de Capacitação Profissional - CIAS</h4>
-            </div><br>
-            <hr />
-          </div>
+          <div align="right">
+            <br><h2><b>Fábrica Social</b></h2>
+            <h4>Centro de Capacitação Profissional - CIAS</h4>
+          </div><br>
+          <hr />
         </div>
-        @content
+      </div>
 
-        <div id="modal_erro" class="reveal-modal small" data-reveal>
-          <h2>Ops...</h2>
-          <p class="lead">Alguma coisa aconteceu</p>
-          <p><b></b></p>
-          <a class="close-reveal-modal">&#215;</a>
-        </div>
+      @content
 
-        <div id="modal-sucesso" class="reveal-modal small" data-reveal>
-          <h2>Sucesso!!</h2>
-          <p class="lead">Operação realizada com sucesso!</p>
-          <p><b></b></p>
-          <a class="close-reveal-modal">&#215;</a>
-        </div>
+      <div id="modal_erro" class="reveal-modal small" data-reveal>
+        <h2>Ops...</h2>
+        <p class="lead">Alguma coisa aconteceu</p>
+        <p><b></b></p>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
 
-        <script type="text/javascript"
-          src="@routes.Assets.at("foundation/js/vendor/modernizr.js")"></script>
-        <script type="text/javascript"
-          src="@routes.Assets.at("foundation/js/vendor/jquery.js")"></script>
-        <script type="text/javascript"
-          src="@routes.Assets.at("foundation/js/foundation.min.js")"></script>
+      <div id="modal-sucesso" class="reveal-modal small" data-reveal>
+        <h2>Sucesso!!</h2>
+        <p class="lead">Operação realizada com sucesso!</p>
+        <p><b></b></p>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
 
-        <script type="text/javascript">
-          $(document).foundation();
-        </script>
-    </body>
+      <script type="text/javascript"
+        src="@routes.Assets.at("foundation/js/vendor/modernizr.js")"></script>
+      <script type="text/javascript"
+        src="@routes.Assets.at("foundation/js/vendor/jquery.js")"></script>
+      <script type="text/javascript"
+        src="@routes.Assets.at("foundation/js/foundation.min.js")"></script>
+
+      <script type="text/javascript">
+        $(document).foundation();
+      </script>
+  </body>
 </html>
