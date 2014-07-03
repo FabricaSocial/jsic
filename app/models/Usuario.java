@@ -27,12 +27,12 @@ public class Usuario extends Model
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
 
-  @Constraints.Required
+  @Constraints.Required(message="Este campo é obrigatório")
   @Formats.NonEmpty
   @Column(name="nome_usuario",unique=true)
   private String nomeUsuario;
 
-  @Constraints.Required
+  @Constraints.Required(message="Este campo é obrigatório")
   @Formats.NonEmpty
   @Column(name="hash_senha")
   private String hashSenha;
@@ -51,6 +51,11 @@ public class Usuario extends Model
 
   public static Finder<Integer,Usuario> find =
     new Finder<Integer,Usuario>(Integer.class,Usuario.class);
+
+  public static Usuario procuraPorNome(String nomeUsuario)
+  {
+    return find.where().eq("nome_usuario", nomeUsuario).findUnique();
+  }
 
   public static Usuario autenticar(String nomeUsuario, String senhaLimpa)
     throws AppException

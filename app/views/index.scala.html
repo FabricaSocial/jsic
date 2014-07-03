@@ -1,0 +1,28 @@
+@(formLogin: Form[Application.Login])
+
+@main("Login | SIC") {
+  <div class="row">
+    <div class="large-4 medium-4 columns"><p></p></div>
+    <div class="large-4 medium-4 columns panel">
+    @helper.form(action=routes.Application.autenticar()){
+      @helper.inputText(
+        formLogin("nomeUsuario"),
+        'placeholder -> "Usuário",
+        '_label -> null,
+        '_help -> "Seu nome de usuário",
+        'class -> "form-control"
+      )
+      @helper.inputPassword(
+        formLogin("senha"),
+        'placeholder -> "Senha",
+        '_label -> null,
+        '_help -> "Sua senha",
+        'class -> "form-control"
+      )
+
+      <button class="postfix radius">Entrar</button>
+    }
+    </div>
+    <div class="large-4 medium-4 columns"><p></p></div>
+  </div>
+}
