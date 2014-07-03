@@ -1,4 +1,4 @@
-name := """sic_funcionario"""
+name := """jsic"""
 
 version := "1.0-SNAPSHOT"
 

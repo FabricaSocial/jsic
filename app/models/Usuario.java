@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Usuario")
@@ -38,7 +38,7 @@ public class Usuario extends Model
   private String hashSenha;
 
   @Column(name="data_criacao")
-  private Date dataCriacao;
+  private LocalDate dataCriacao;
 
 
   public Integer getId() { return this.id; }
@@ -46,8 +46,8 @@ public class Usuario extends Model
   public void setNomeUsuario(String nomeUsuario) { this.nomeUsuario = nomeUsuario; }
   public String getHashSenha() { return this.hashSenha; }
   public void setHashSenha(String hashSenha) { this.hashSenha = hashSenha; }
-  public Date getDataCriacao() { return this.dataCriacao; }
-  public void setDataCriacao(Date dataCriacao) { this.dataCriacao = dataCriacao; }
+  public LocalDate getDataCriacao() { return this.dataCriacao; }
+  public void setDataCriacao(LocalDate dataCriacao) { this.dataCriacao = dataCriacao; }
 
   public static Finder<Integer,Usuario> find =
     new Finder<Integer,Usuario>(Integer.class,Usuario.class);

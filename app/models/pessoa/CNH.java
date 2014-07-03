@@ -4,8 +4,6 @@ import play.db.ebean.Model;
 
 import java.math.BigInteger;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name="CNH")
@@ -31,10 +31,10 @@ public class CNH extends Model
   private BigInteger numero;
 
   @Column(name="data_emissao")
-  private Date dataEmissao;
+  private LocalDate dataEmissao;
 
   @Column(name="validade")
-  private Date validade;
+  private LocalDate validade;
 
   @ManyToOne
   @JoinColumn(name="uf_id", referencedColumnName="id")
@@ -51,8 +51,8 @@ public class CNH extends Model
   public CNH()
   {
     this.numero = BigInteger.valueOf(0);
-    this.dataEmissao = new Date();
-    this.validade = new Date();
+    this.dataEmissao = LocalDate.now();
+    this.validade = LocalDate.now();
     this.uf = new UF();
     this.categoriaCNH = new CategoriaCNH();
     this.pessoa = new Pessoa();
@@ -61,10 +61,10 @@ public class CNH extends Model
   public Integer getId() { return this.id; }
   public BigInteger getNumero() { return this.numero; }
   public void setNumero(BigInteger numero) { this.numero = numero; }
-  public Date getDataEmissao() { return this.dataEmissao; }
-  public void setDataEmissao(Date dataEmissao) { this.dataEmissao = dataEmissao; }
-  public Date getValidade() { return this.validade; }
-  public void setValidade(Date validade) { this.validade = validade; }
+  public LocalDate getDataEmissao() { return this.dataEmissao; }
+  public void setDataEmissao(LocalDate dataEmissao) { this.dataEmissao = dataEmissao; }
+  public LocalDate getValidade() { return this.validade; }
+  public void setValidade(LocalDate validade) { this.validade = validade; }
   public UF getUF() { return this.uf; }
   public void setUF(UF uf) { this.uf = uf; }
   public CategoriaCNH getCategoriaCNH() { return this.categoriaCNH; }

@@ -2,16 +2,16 @@ package models.pessoa.capacitando;
 
 import play.db.ebean.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Categoria")
-public class Categoria extends Model
+@Table(name="AreaAtuacao")
+public class AreaAtuacao extends Model
 {
   private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class Categoria extends Model
   @Column(name="descricao")
   private String descricao;
 
-  public Categoria()
+  public AreaAtuacao()
   {
     this.descricao = "";
   }
@@ -37,6 +37,6 @@ public class Categoria extends Model
     return getDescricao();
   }
 
-  public static Finder<Integer,Categoria> find =
-    new Finder<Integer,Categoria>(Integer.class,Categoria.class);
+  public static Finder<Integer,AreaAtuacao> find =
+    new Finder<Integer,AreaAtuacao>(Integer.class,AreaAtuacao.class);
 }
