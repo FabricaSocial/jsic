@@ -82,13 +82,6 @@ public class Application extends Controller
       {
         return TODO;
       }
-/*
-      Usuario usuario = new Usuario();
-      usuario.setNomeUsuario(login.nomeUsuario);
-      usuario.mudaSenha(login.senha);
-
-      usuario.save();
-      */
     }
 
     return badRequest(index.render(formLogin));

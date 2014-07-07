@@ -1,4 +1,4 @@
-package models.pessoa;
+package models.pessoa.funcionario;
 
 import play.db.ebean.Model;
 
@@ -7,12 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="EstadoCivil")
-public class EstadoCivil extends Model
+@Table(name="TipoAudit")
+public class TipoAudit extends Model
 {
   private static final long serialVersionUID = 1L;
 
@@ -24,7 +23,7 @@ public class EstadoCivil extends Model
   @Column(name="descricao")
   private String descricao;
 
-  public EstadoCivil()
+  public TipoAudit()
   {
     this.descricao = "";
   }
@@ -38,6 +37,6 @@ public class EstadoCivil extends Model
     return getDescricao();
   }
 
-  public static Finder<Integer,EstadoCivil> find =
-    new Finder<Integer,EstadoCivil>(Integer.class,EstadoCivil.class);
+  public static Finder<Integer,TipoAudit> find =
+    new Finder<Integer,TipoAudit>(Integer.class,TipoAudit.class);
 }

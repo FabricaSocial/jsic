@@ -99,31 +99,4 @@ public class Usuario extends Model
 
   public static Finder<Integer,Usuario> find =
     new Finder<Integer,Usuario>(Integer.class,Usuario.class);
-
-  public static Usuario procuraPorNome(String nomeUsuario)
-  {
-    return find.where().eq("username", nomeUsuario).findUnique();
-  }
-
-  public static Usuario autenticar(String nomeUsuario, String senhaLimpa)
-    throws AppException
-  {
-    Usuario usuario = find.where().eq("username", nomeUsuario).findUnique();
-    if(usuario != null)
-    {
-      if(Hash.checaSenha(senhaLimpa, usuario.senha))
-      {
-        return usuario;
-      }
-    }
-
-    return null;
-  }
-
-  public void mudaSenha(String senha)
-    throws AppException
-  {
-    this.setSenha(Hash.criarSenha(senha));
-    this.save();
-  }
 }
