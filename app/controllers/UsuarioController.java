@@ -19,7 +19,7 @@ public class UsuarioController extends Controller
     Usuario usuario = procuraPorNome(nomeUsuario);
     if(usuario != null)
     {
-      if(Hash.checaSenha(senhaLimpa, usuario.senha))
+      if(Hash.checaSenha(senhaLimpa, usuario.getSenha()))
       {
         return usuario;
       }

@@ -21,7 +21,7 @@ public class Application extends Controller
     String nomeUsuario = ctx().session().get("nomeUsuario");
     if(nomeUsuario != null)
     {
-      Usuario usuario = Usuario.procuraPorNome(nomeUsuario);
+      Usuario usuario = UsuarioController.procuraPorNome(nomeUsuario);
       if(usuario != null)
       {
         return TODO;
@@ -47,7 +47,7 @@ public class Application extends Controller
       Usuario usuario = null;
       try
       {
-        usuario = Usuario.autenticar(nomeUsuario, senha);
+        usuario = UsuarioController.autenticar(nomeUsuario, senha);
       }
       catch(AppException excecao)
       {
