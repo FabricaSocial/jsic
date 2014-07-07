@@ -1,0 +1,46 @@
+@main("Lista Telefônica | SIC"){
+    
+    <div class="row">
+        <div class="large-7 medium-7 small-7 columns">
+            <div class="large-7 medium-7 small-8 columns"><p></p></div>
+            <div class="large-5 medium-5 small-4 columns panel"><p></p></div>
+
+            <div class="row" id="id_agenda" align="center">
+                <table>
+                    <thead>
+                        <th>Dpto.</th>
+                        <th width="350">Nome</th>
+                        <th>Ramal</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DETI</td>
+                            <td>Matheus Fernandes</td>
+                            <td>111</td>
+                        </tr>
+                        <tr>
+                            <td>DETI</td>
+                            <td>Jannsen Oliveira</td>
+                            <td>112</td>
+                        </tr>
+                        <tr>
+                            <td>DETI</td>
+                            <td>Carlos Oliveira</td>
+                            <td>113</td>
+                        </tr>
+                        <tr>
+                            <td>DETI</td>
+                            <td>Flávio Aragão</td>
+                            <td>111</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="large-5 medium-5 small-5 columns panel callout">
+            <h3><b>Departamentos</b></h3><hr>
+            @ramais_departamentos()
+        </div>
+    </div>
+
+}
