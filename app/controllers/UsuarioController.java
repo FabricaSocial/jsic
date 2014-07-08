@@ -13,6 +13,13 @@ public class UsuarioController extends Controller
     return Usuario.find.where().eq("username", nomeUsuario).findUnique();
   }
 
+  public static class formNovoUsuario{
+    @Constraints.Required
+    public String nomeUsuario;
+    @Constraints.Required
+    public String senha;
+  }
+
   public static Usuario novoUsuario(String nomeUsuario, String senha)
     throws AppException
   {

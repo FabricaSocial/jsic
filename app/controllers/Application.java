@@ -85,4 +85,5 @@ public class Application extends Controller
 
     return badRequest(index.render(formLogin));
   }
+
 }
