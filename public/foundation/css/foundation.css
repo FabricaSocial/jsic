@@ -1260,6 +1260,8 @@ meta.foundation-mq-topbar {
     padding-bottom: .35rem;
     font-size: 0.75rem; }
   .top-bar .button, .top-bar button {
+    background: #eaeaea;
+    color: #333333;
     padding-top: .45rem;
     padding-bottom: .35rem;
     margin-bottom: 0;
@@ -2507,16 +2509,16 @@ blockquote p {
     float: left; }
     .tabs dd > a, .tabs .tab-title > a {
       display: block;
-      background: #efefef;
-      color: #222222;
+      background: #474747;
+      color: white;
       padding: 1rem 2rem;
       font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       .tabs dd > a:hover, .tabs .tab-title > a:hover {
-        background: #e1e1e1; }
+        background: #5b5b5b; }
     .tabs dd.active a, .tabs .tab-title.active a {
-      background: white;
-      color: #222222; }
+      background: #eaeaea;
+      color: #333333; }
   .tabs.radius dd:first-child a, .tabs.radius .tab:first-child a {
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
