@@ -15,9 +15,8 @@ import static play.data.Form.form;
 
 public class Application extends Controller
 {
-
-   public static Result index()
-   {
+  public static Result index()
+  {
     String nomeUsuario = ctx().session().get("nomeUsuario");
     if(nomeUsuario != null)
     {
@@ -33,10 +32,10 @@ public class Application extends Controller
       }
     }
     return ok(index.render(form(Login.class)));
-   }
+  }
 
-   public static class Login
-   {
+  public static class Login
+  {
     @Constraints.Required
     public String nomeUsuario;
     @Constraints.Required

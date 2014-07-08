@@ -13,6 +13,20 @@ public class UsuarioController extends Controller
     return Usuario.find.where().eq("username", nomeUsuario).findUnique();
   }
 
+  public static Usuario novoUsuario(String nomeUsuario, String senha)
+    throws AppException
+  {
+    Usuario usuario = new Usuario();
+
+    usuario.setNomeUsuario(nomeUsuario);
+
+    usuario.save();
+
+    mudaSenha(nomeUsuario, senha);
+
+    return usuario;
+  }
+
   public static Usuario autenticar(String nomeUsuario, String senhaLimpa)
     throws AppException
   {
@@ -28,7 +42,7 @@ public class UsuarioController extends Controller
     return null;
   }
 
-  public void mudaSenha(String nomeUsuario, String senha)
+  public static void mudaSenha(String nomeUsuario, String senha)
     throws AppException
   {
     Usuario usuario = procuraPorNome(nomeUsuario);
