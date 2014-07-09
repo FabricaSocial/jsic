@@ -32,9 +32,8 @@ public class FuncionarioController extends Controller
    */
   private static List<Funcionario> obterListaFuncionarios()
   {
-    return ok(
-         views.html.listaTelefonica.render(obterListaFuncionarios())
-    );
-    return TODO;
+    List<Funcionario> listaFuncionarios = Funcionario.find.all();
+
+    return listaFuncionarios;
   }
 }
