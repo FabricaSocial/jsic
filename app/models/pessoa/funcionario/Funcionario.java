@@ -40,7 +40,7 @@ public class Funcionario extends Model
   private Cargo cargo;
 
   @ManyToOne
-  @JoinColumn(name="unidade_id", referencedColumnName="id")
+  @JoinColumn(name="departamento_id", referencedColumnName="id")
   private Departamento departamento;
 
   public Funcionario()
