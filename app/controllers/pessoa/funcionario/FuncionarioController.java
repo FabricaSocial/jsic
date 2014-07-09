@@ -9,6 +9,11 @@ import models.pessoa.funcionario.Funcionario;
 
 public class FuncionarioController extends Controller
 {
+  /**
+   * Obtem a lista de todos os funcionários
+   *
+   * @return lista contendo todos os funcionários
+   */
   public static List<Funcionario> obterListaFuncionarios()
   {
     List<Funcionario> listaFuncionarios = Funcionario.find.all();
@@ -16,6 +21,11 @@ public class FuncionarioController extends Controller
     return listaFuncionarios;
   }
 
+  /**
+   * Lista todos os funcionários
+   *
+   * @return a lista de funcionários a ser utilizada na view
+   */
   public static Result listar()
   {
     System.out.println(obterListaFuncionarios());
