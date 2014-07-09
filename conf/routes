@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET     /teste                      controllers.pessoa.funcionario.FuncionarioController.listar()
+GET     /telefones                      controllers.pessoa.funcionario.FuncionarioController.listar_telefones()
 POST    /                           controllers.Application.autenticar()
 
 # Map static resources from the /public folder to the /assets URL path

@@ -2,6 +2,8 @@ package controllers.pessoa.funcionario;
 
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.db.ebean.*;
+
 
 import java.util.List;
 
@@ -11,24 +13,24 @@ import models.pessoa.funcionario.Funcionario;
 public class FuncionarioController extends Controller
 {
   /**
-   * Obtem a lista de todos os funcionários
+   * Lista os telefones de todos os funcionários
    *
-   * @return lista contendo todos os funcionários
+   * @return a lista de funcionários a ser utilizada na view
    */
-  public static List<Funcionario> obterListaFuncionarios()
+  public static Result listar_telefones()
   {
-    List<Funcionario> listaFuncionarios = Funcionario.find.all();
-
-    return listaFuncionarios;
+    return ok(
+        views.html.listaTelefonica.render(obterListaFuncionarios())
+    );
   }
 
 
   /**
-   * Lista todos os funcionários
+   * Obtem a lista de todos os funcionários
    *
-   * @return a lista de funcionários a ser utilizada na view
+   * @return lista contendo todos os funcionários
    */
-  public static Result listar()
+  private static List<Funcionario> obterListaFuncionarios()
   {
     return ok(
          views.html.listaTelefonica.render(obterListaFuncionarios())
