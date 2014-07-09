@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import models.pessoa.Pessoa;
-import models.pessoa.capacitando.Unidade;
 
 @Entity
 @Table(name="Funcionario")
@@ -42,7 +41,7 @@ public class Funcionario extends Model
 
   @ManyToOne
   @JoinColumn(name="unidade_id", referencedColumnName="id")
-  private Unidade unidade;
+  private Departamento departamento;
 
   public Funcionario()
   {
@@ -61,8 +60,8 @@ public class Funcionario extends Model
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
   public Cargo getCargo() { return this.cargo; }
   public void setCargo(Cargo cargo) { this.cargo = cargo; }
-  public Unidade getUnidade() { return this.unidade; }
-  public void setUnidade(Unidade unidade) { this.unidade = unidade; }
+  public Departamento getDepartamento() { return this.departamento; }
+  public void setDepartamento(Departamento departamento) { this.departamento = departamento; }
 
   public String toString()
   {
