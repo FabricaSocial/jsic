@@ -4,8 +4,9 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.db.ebean.*;
 
-
+import java.util.ArrayList;
 import java.util.List;
+
 
 import models.pessoa.funcionario.Departamento;
 import models.pessoa.funcionario.Funcionario;
@@ -21,8 +22,10 @@ public class FuncionarioController extends Controller
    */
   public static Result listar_telefones()
   {
+    List<Departamento> departamentos = DepartamentoController.obterListaDepartamento();
+    List<List<Funcionario>> funcionarios = obterFuncionariosPorDepartamento();
     return ok(
-        views.html.listaTelefonica.render(obterListaFuncionarios())
+        views.html.listaTelefonica.render(departamentos, funcionarios)
     );
   }
 
@@ -39,9 +42,9 @@ public class FuncionarioController extends Controller
     return listaFuncionarios;
   }
 
-  private static List<List> obterFuncionariosPorDepartamento()
+  private static List<List<Funcionario> > obterFuncionariosPorDepartamento()
   {
-    List<List> funcionariosPorDepartamento = null;
+    List<List<Funcionario> > funcionariosPorDepartamento = new ArrayList<List<Funcionario> >();
     for(Departamento departamento : DepartamentoController.obterListaDepartamento())
     {
       List<Funcionario> funcionariosNoDepartamento = Funcionario.find.where()

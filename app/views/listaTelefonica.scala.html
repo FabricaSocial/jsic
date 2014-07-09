@@ -1,5 +1,6 @@
 @import models.pessoa.funcionario.Funcionario
-@(listaFuncionarios: List[Funcionario])
+@import models.pessoa.funcionario.Departamento
+@(departamentos: List[Departamento], funcionarios: List[List[Funcionario]])
 
 @main("Lista Telefônica | SIC"){
 
@@ -33,14 +34,14 @@
   
   <div class="row">
     <dl class="tabs vertical" data-tab>
-      <dd><a href="#panel1a">DETI - 1234</a></dd>
+      @for(departamento <- departamentos){
+        <dd><a href="#departamento@departamento.getId()">@departamento.getAbreviacao() - @departamento.getRamal()</a></dd>
+      }
     </dl>
     <div class="tabs-content vertical">
-      <div class="content" id="panel1a">
+      @for(departamentos <- funcionarios){
+      <div class="content" id="departamento@(funcionarios.indexOf(departamentos)+1)">
         <div class="row" align="center">
-          @for(f <- listaFuncionarios){
-            @f
-          }
           <br>
           <table>
             <thead>
@@ -50,31 +51,18 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td>DETI</td>
-                <td>Matheus Souza Fernandes</td>
-                <td>111</td>
-              </tr>
-              <tr>
-                <td>DETI</td>
-                <td>Matheus Souza Fernandes</td>
-                <td>111</td>
-              </tr>
-              <tr>
-                <td>DETI</td>
-                <td>Matheus Souza Fernandes</td>
-                <td>111</td>
-              </tr>
-              <tr>
-                <td>DETI</td>
-                <td>Matheus Souza Fernandes</td>
-                <td>111</td>
-              </tr> 
+              @for(funcionario <- departamentos){
+                <tr>
+                  <td>DETI</td>
+                  <td>Matheus Souza Fernandes</td>
+                  <td>111</td>
+                </tr>
+              }
             </tbody>
-
           </table>
         </div>
       </div>
+      }
       <div class="content" id="panel2a">
         <p>Panel 2.</p>
       </div>
