@@ -1,19 +1,17 @@
 package models.pessoa.funcionario;
 
+import play.db.ebean.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import play.db.ebean.Model;
-
 @Entity
-@Table(name="Departamento")
-public class Departamento extends Model
+@Table(name="Coordenadoria")
+public class Coordenadoria extends Model
 {
   private static final long serialVersionUID = 1L;
 
@@ -28,15 +26,10 @@ public class Departamento extends Model
   @Column(name="abreviacao")
   private String abreviacao;
 
-  @ManyToOne
-  @JoinColumn(name="coordenadoria_adjunta_id", referencedColumnName="id")
-  private CoordenadoriaAdjunta coordenadoriaAdjunta;
-
-  public Departamento()
+  public Coordenadoria()
   {
     this.descricao = "";
     this.abreviacao = "";
-    this.coordenadoriaAdjunta = new CoordenadoriaAdjunta();
   }
 
   public Integer getId() { return this.id; }
@@ -45,14 +38,12 @@ public class Departamento extends Model
   public void setDescricao(String descricao) { this.descricao = descricao; }
   public String getAbreviacao() { return this.abreviacao; }
   public void setAbreviacao(String abreviacao) { this.abreviacao = abreviacao; }
-  public CoordenadoriaAdjunta getCoordenadoriaAdjunta() { return this.coordenadoriaAdjunta; }
-  public void setCoordenadoriaAdjunta(CoordenadoriaAdjunta coordenadoriaAdjunta) { this.coordenadoriaAdjunta = coordenadoriaAdjunta; }
 
   public String toString()
   {
-    return getAbreviacao() + " - " + getDescricao();
+    return getDescricao();
   }
 
-  public static Finder<Integer,Departamento> find =
-    new Finder<Integer,Departamento>(Integer.class,Departamento.class);
+  public static Finder<Integer,Coordenadoria> find =
+    new Finder<Integer,Coordenadoria>(Integer.class,Coordenadoria.class);
 }
