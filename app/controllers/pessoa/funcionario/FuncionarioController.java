@@ -5,6 +5,7 @@ import play.mvc.Result;
 
 import java.util.List;
 
+import models.pessoa.funcionario.Departamento;
 import models.pessoa.funcionario.Funcionario;
 
 public class FuncionarioController extends Controller
@@ -21,6 +22,7 @@ public class FuncionarioController extends Controller
     return listaFuncionarios;
   }
 
+
   /**
    * Lista todos os funcionários
    *
@@ -28,10 +30,9 @@ public class FuncionarioController extends Controller
    */
   public static Result listar()
   {
-    System.out.println(obterListaFuncionarios());
-    // return ok(
-    //     views.html.listaTelefonica.render(obterListaFuncionarios())
-    // );
+    return ok(
+         views.html.listaTelefonica.render(obterListaFuncionarios())
+    );
     return TODO;
   }
 }

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.time.LocalDateTime;
@@ -29,15 +29,15 @@ public class FuncionarioAudit extends Model
   @Column(name="timestamp")
   private LocalDateTime timestamp;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name="auth_user_id", referencedColumnName="id")
   private Usuario usuario;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name="tipo_audit_id", referencedColumnName="id")
   private TipoAudit tipoAudit;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name="cargo_id", referencedColumnName="id")
   private Cargo cargo;
 

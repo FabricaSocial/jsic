@@ -88,4 +88,14 @@ public class UsuarioController extends Controller
       usuario.save();
     }
   }
+
+  public static void deletaUsuario(String nomeUsuario)
+    throws AppException
+  {
+    Usuario usuario = procuraPorNome(nomeUsuario);
+    if(usuario != null)
+    {
+      
+    }
+  }
 }

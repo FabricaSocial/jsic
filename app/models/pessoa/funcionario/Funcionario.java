@@ -8,10 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import models.pessoa.Pessoa;
+import models.pessoa.capacitando.Unidade;
 
 @Entity
 @Table(name="Funcionario")
@@ -34,9 +36,13 @@ public class Funcionario extends Model
   @JoinColumn(name="pessoa_id", referencedColumnName="id")
   private Pessoa pessoa;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name="cargo_id", referencedColumnName="id")
   private Cargo cargo;
+
+  @ManyToOne
+  @JoinColumn(name="unidade_id", referencedColumnName="id")
+  private Unidade unidade;
 
   public Funcionario()
   {
@@ -55,6 +61,8 @@ public class Funcionario extends Model
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
   public Cargo getCargo() { return this.cargo; }
   public void setCargo(Cargo cargo) { this.cargo = cargo; }
+  public Unidade getUnidade() { return this.unidade; }
+  public void setUnidade(Unidade unidade) { this.unidade = unidade; }
 
   public String toString()
   {
