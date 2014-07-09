@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.time.LocalTime;
+import java.sql.Time;
 
 @Entity
 @Table(name="Turno")
@@ -26,61 +26,61 @@ public class Turno extends Model
   private String descricao;
 
   @Column(name="entrada")
-  private LocalTime entrada;
+  private Time entrada;
 
   @Column(name="entrada_tolerancia")
-  private LocalTime entradaTolerancia;
+  private Time entradaTolerancia;
 
   @Column(name="saida_lanche")
-  private LocalTime saidaLanche;
+  private Time saidaLanche;
 
   @Column(name="saida_lanche_tolerancia")
-  private LocalTime saidaLancheTolerancia;
+  private Time saidaLancheTolerancia;
 
   @Column(name="entrada_lanche")
-  private LocalTime entradaLanche;
+  private Time entradaLanche;
 
   @Column(name="entrada_lanche_tolerancia")
-  private LocalTime entradaLancheTolerancia;
+  private Time entradaLancheTolerancia;
 
   @Column(name="saida")
-  private LocalTime saida;
+  private Time saida;
 
   @Column(name="saida_tolerancia")
-  private LocalTime saidaTolerancia;
+  private Time saidaTolerancia;
 
   public Turno()
   {
     this.descricao = "";
-    this.entrada = LocalTime.now();
-    this.entradaTolerancia = LocalTime.now();
-    this.saidaLanche = LocalTime.now();
-    this.saidaLancheTolerancia = LocalTime.now();
-    this.entradaLanche = LocalTime.now();
-    this.entradaLancheTolerancia = LocalTime.now();
-    this.saida = LocalTime.now();
-    this.saidaTolerancia = LocalTime.now();
+    this.entrada = new Time(System.currentTimeMillis());
+    this.entradaTolerancia = new Time(System.currentTimeMillis());
+    this.saidaLanche = new Time(System.currentTimeMillis());
+    this.saidaLancheTolerancia = new Time(System.currentTimeMillis());
+    this.entradaLanche = new Time(System.currentTimeMillis());
+    this.entradaLancheTolerancia = new Time(System.currentTimeMillis());
+    this.saida = new Time(System.currentTimeMillis());
+    this.saidaTolerancia = new Time(System.currentTimeMillis());
   }
 
   public Integer getId() { return this.id; }
   public String getDescricao() { return this.descricao; }
   public void setDescricao(String descricao) { this.descricao = descricao; }
-  public LocalTime getEntrada() { return this.entrada; }
-  public void setEntrada(LocalTime entrada) { this.entrada = entrada; }
-  public LocalTime getEntradaTolerancia() { return this.entradaTolerancia; }
-  public void setEntradaTolerancia(LocalTime entradaTolerancia) { this.entradaTolerancia = entradaTolerancia; }
-  public LocalTime getSaidaLanche() { return this.saidaLanche; }
-  public void setSaidaLanche(LocalTime aidaLanche) { this.saidaLanche = aidaLanche; }
-  public LocalTime getSaidaLancheTolerancia() { return this.saidaLancheTolerancia; }
-  public void setSaidaLancheTolerancia(LocalTime aidaLancheTolerancia) { this.saidaLancheTolerancia = aidaLancheTolerancia; }
-  public LocalTime getEntradaLanche() { return this.entradaLanche; }
-  public void setEntradaLanche(LocalTime entradaLanche) { this.entradaLanche = entradaLanche; }
-  public LocalTime getEntradaLancheTolerancia() { return this.entradaLancheTolerancia; }
-  public void setEntradaLancheTolerancia(LocalTime entradaLancheTolerancia) { this.entradaLancheTolerancia = entradaLancheTolerancia; }
-  public LocalTime getSaida() { return this.saida; }
-  public void setSaida(LocalTime aida) { this.saida = aida; }
-  public LocalTime getSaidaTolerancia() { return this.saidaTolerancia; }
-  public void setSaidaTolerancia(LocalTime aidaTolerancia) { this.saidaTolerancia = aidaTolerancia; }
+  public Time getEntrada() { return this.entrada; }
+  public void setEntrada(Time entrada) { this.entrada = entrada; }
+  public Time getEntradaTolerancia() { return this.entradaTolerancia; }
+  public void setEntradaTolerancia(Time entradaTolerancia) { this.entradaTolerancia = entradaTolerancia; }
+  public Time getSaidaLanche() { return this.saidaLanche; }
+  public void setSaidaLanche(Time aidaLanche) { this.saidaLanche = aidaLanche; }
+  public Time getSaidaLancheTolerancia() { return this.saidaLancheTolerancia; }
+  public void setSaidaLancheTolerancia(Time aidaLancheTolerancia) { this.saidaLancheTolerancia = aidaLancheTolerancia; }
+  public Time getEntradaLanche() { return this.entradaLanche; }
+  public void setEntradaLanche(Time entradaLanche) { this.entradaLanche = entradaLanche; }
+  public Time getEntradaLancheTolerancia() { return this.entradaLancheTolerancia; }
+  public void setEntradaLancheTolerancia(Time entradaLancheTolerancia) { this.entradaLancheTolerancia = entradaLancheTolerancia; }
+  public Time getSaida() { return this.saida; }
+  public void setSaida(Time aida) { this.saida = aida; }
+  public Time getSaidaTolerancia() { return this.saidaTolerancia; }
+  public void setSaidaTolerancia(Time aidaTolerancia) { this.saidaTolerancia = aidaTolerancia; }
 
   public String toString()
   {

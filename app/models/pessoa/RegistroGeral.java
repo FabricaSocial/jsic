@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="RegistroGeral")
@@ -34,7 +34,7 @@ public class RegistroGeral extends Model
   private String orgaoExpedidor;
 
   @Column(name="data_expedicao")
-  private LocalDate dataExpedicao;
+  private Date dataExpedicao;
 
   @OneToOne
   @JoinColumn(name="pessoa_id", referencedColumnName="id")
@@ -48,7 +48,7 @@ public class RegistroGeral extends Model
   {
     this.rg = BigInteger.valueOf(0);
     this.orgaoExpedidor = "";
-    this.dataExpedicao = LocalDate.now();
+    this.dataExpedicao = new Date();
     this.pessoa = new Pessoa();
     this.uf = new UF();
   }
@@ -58,8 +58,8 @@ public class RegistroGeral extends Model
   public void setRg(BigInteger rg) { this.rg = rg; }
   public String getOrgaoExpedidor() { return this.orgaoExpedidor; }
   public void setOrgaoExpedidor(String orgaoExpedidor) { this.orgaoExpedidor = orgaoExpedidor; }
-  public LocalDate getDataExpedicao() { return this.dataExpedicao; }
-  public void setDataExpedicao(LocalDate dataExpedicao) { this.dataExpedicao = dataExpedicao; }
+  public Date getDataExpedicao() { return this.dataExpedicao; }
+  public void setDataExpedicao(Date dataExpedicao) { this.dataExpedicao = dataExpedicao; }
   public Pessoa getPessoa() { return this.pessoa; }
   public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
   public UF getUF() { return this.uf; }

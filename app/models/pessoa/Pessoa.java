@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="Pessoa")
@@ -33,7 +33,7 @@ public class Pessoa extends Model
   private String nome;
 
   @Column(name="data_nascimento")
-  private LocalDate dataNascimento;
+  private Date dataNascimento;
 
   @Column(name="sexo")
   private Boolean sexo;
@@ -72,7 +72,7 @@ public class Pessoa extends Model
   {
     this.cpf = BigInteger.valueOf(0);
     this.nome = "";
-    this.dataNascimento = LocalDate.now();
+    this.dataNascimento = new Date();
     this.sexo = false;
     this.filhos = false;
     this.foto = "";
@@ -89,8 +89,8 @@ public class Pessoa extends Model
   public void setCpf(BigInteger cpf) { this.cpf = cpf; }
   public String getNome() { return this.nome; }
   public void setNome(String nome) { this.nome = nome; }
-  public LocalDate getDataNascimento() { return this.dataNascimento; }
-  public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
+  public Date getDataNascimento() { return this.dataNascimento; }
+  public void setDataNascimento(Date dataNascimento) { this.dataNascimento = dataNascimento; }
   public Boolean getSexo() { return this.sexo; }
   public void setwexo(Boolean sexo) { this.sexo = sexo; }
   public Boolean getFilhos() { return this.filhos; }

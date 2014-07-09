@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="auth_user")
@@ -33,7 +33,7 @@ public class Usuario extends Model
   private String senha;
 
   @Column(name="last_login")
-  private LocalDateTime ultimoLogin;
+  private Date ultimoLogin;
 
   @Column(name="is_superuser")
   private Boolean superusuario;
@@ -59,12 +59,12 @@ public class Usuario extends Model
   private Boolean ativo;
 
   @Column(name="date_joined")
-  private LocalDateTime dataCriacao;
+  private Date dataCriacao;
 
   public Usuario()
   {
     this.senha = "";
-    this.ultimoLogin = LocalDateTime.now();
+    this.ultimoLogin = new Date();
     this.superusuario = false;
     this.nomeUsuario = "";
     this.primeiroNome = "";
@@ -72,14 +72,14 @@ public class Usuario extends Model
     this.email = "";
     this.staff = false;
     this.ativo = true;
-    this.dataCriacao = LocalDateTime.now();
+    this.dataCriacao = new Date();
   }
 
   public Integer getId() { return this.id; }
   public String getSenha() { return this.senha; }
   public void setSenha(String senha) { this.senha = senha; }
-  public LocalDateTime getUltimoLogin() { return this.ultimoLogin; }
-  public void setUltimoLogin(LocalDateTime ultimoLogin) { this.ultimoLogin = ultimoLogin; }
+  public Date getUltimoLogin() { return this.ultimoLogin; }
+  public void setUltimoLogin(Date ultimoLogin) { this.ultimoLogin = ultimoLogin; }
   public Boolean getSuperusuario() { return this.superusuario; }
   public void setSuperusuario(Boolean superusuario) { this.superusuario = superusuario; }
   public String getNomeUsuario() { return this.nomeUsuario; }
@@ -94,8 +94,8 @@ public class Usuario extends Model
   public void setStaff(Boolean staff) { this.staff = staff; }
   public Boolean getAtivo() { return this.ativo; }
   public void setAtivo(Boolean ativo) { this.ativo = ativo; }
-  public LocalDateTime getDataCriacao() { return this.dataCriacao; }
-  public void setDataCriacao(LocalDateTime dataCriacao) { this.dataCriacao = dataCriacao; }
+  public Date getDataCriacao() { return this.dataCriacao; }
+  public void setDataCriacao(Date dataCriacao) { this.dataCriacao = dataCriacao; }
 
   public static Finder<Integer,Usuario> find =
     new Finder<Integer,Usuario>(Integer.class,Usuario.class);

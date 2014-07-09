@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
+import java.sql.Time;
 
 import models.Usuario;
 import models.pessoa.capacitando.Capacitando;
@@ -29,10 +29,10 @@ public class Ponto extends Model
   private Integer id;
 
   @Column(name="data")
-  private LocalDate data;
+  private Date data;
 
   @Column(name="hora")
-  private LocalTime hora;
+  private Time hora;
 
   @ManyToOne
   @JoinColumn(name="tipo_ponto_id", referencedColumnName="id")
@@ -46,12 +46,21 @@ public class Ponto extends Model
   @JoinColumn(name="user_id", referencedColumnName="id")
   private Usuario usuario;
 
+  public Ponto()
+  {
+    this.data = new Date();
+    this.hora = new Time(System.currentTimeMillis());
+    this.tipoPonto = new TipoPonto();
+    this.capacitando = new Capacitando();
+    this.usuario = new Usuario();
+  }
+
   public Integer getId() { return this.id; }
   public void setId(Integer id) { this.id = id; }
-  public LocalDate getData() { return this.data; }
-  public void setData(LocalDate data) { this.data = data; }
-  public LocalTime getHora() { return this.hora; }
-  public void setHora(LocalTime hora) { this.hora = hora; }
+  public Date getData() { return this.data; }
+  public void setData(Date data) { this.data = data; }
+  public Time getHora() { return this.hora; }
+  public void setHora(Time hora) { this.hora = hora; }
   public TipoPonto getTipoPonto() { return this.tipoPonto; }
   public void setTipoPonto(TipoPonto tipoPonto) { this.tipoPonto = tipoPonto; }
   public Capacitando getCapacitando() { return this.capacitando; }
@@ -64,4 +73,7 @@ public class Ponto extends Model
     return getTipoPonto().toString() + " - " + getData().toString() + " "
     + getHora().toString() + " - " + getCapacitando().toString();
   }
+
+  public static Finder<Integer,Ponto> find =
+    new Finder<Integer,Ponto>(Integer.class,Ponto.class);
 }

@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="Desligamento")
@@ -25,7 +25,7 @@ public class Desligamento extends Model
   private Integer id;
 
   @Column(name="data")
-  private LocalDate data;
+  private Date data;
 
   @OneToOne
   @JoinColumn(name="capacitando_id", referencedColumnName="id")
@@ -33,13 +33,13 @@ public class Desligamento extends Model
 
   public Desligamento()
   {
-    this.data = LocalDate.now();
+    this.data = new Date();
     this.capacitando = new Capacitando();
   }
 
   public Integer getId() { return this.id; }
-  public LocalDate getData() { return this.data; }
-  public void setData(LocalDate data) { this.data = data; }
+  public Date getData() { return this.data; }
+  public void setData(Date data) { this.data = data; }
   public Capacitando getCapacitando() { return this.capacitando; }
   public void setCapacitando(Capacitando capacitando) { this.capacitando = capacitando; }
 

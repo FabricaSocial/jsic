@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="CNH")
@@ -31,10 +31,10 @@ public class CNH extends Model
   private BigInteger numero;
 
   @Column(name="data_emissao")
-  private LocalDate dataEmissao;
+  private Date dataEmissao;
 
   @Column(name="validade")
-  private LocalDate validade;
+  private Date validade;
 
   @ManyToOne
   @JoinColumn(name="uf_id", referencedColumnName="id")
@@ -51,8 +51,8 @@ public class CNH extends Model
   public CNH()
   {
     this.numero = BigInteger.valueOf(0);
-    this.dataEmissao = LocalDate.now();
-    this.validade = LocalDate.now();
+    this.dataEmissao = new Date();
+    this.validade = new Date();
     this.uf = new UF();
     this.categoriaCNH = new CategoriaCNH();
     this.pessoa = new Pessoa();
@@ -61,10 +61,10 @@ public class CNH extends Model
   public Integer getId() { return this.id; }
   public BigInteger getNumero() { return this.numero; }
   public void setNumero(BigInteger numero) { this.numero = numero; }
-  public LocalDate getDataEmissao() { return this.dataEmissao; }
-  public void setDataEmissao(LocalDate dataEmissao) { this.dataEmissao = dataEmissao; }
-  public LocalDate getValidade() { return this.validade; }
-  public void setValidade(LocalDate validade) { this.validade = validade; }
+  public Date getDataEmissao() { return this.dataEmissao; }
+  public void setDataEmissao(Date dataEmissao) { this.dataEmissao = dataEmissao; }
+  public Date getValidade() { return this.validade; }
+  public void setValidade(Date validade) { this.validade = validade; }
   public UF getUF() { return this.uf; }
   public void setUF(UF uf) { this.uf = uf; }
   public CategoriaCNH getCategoriaCNH() { return this.categoriaCNH; }

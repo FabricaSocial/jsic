@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 import java.math.BigInteger;
 
-import java.time.LocalTime;
-import java.time.LocalDate;
+import java.sql.Time;
+import java.util.Date;
 
 import models.pessoa.Pessoa;
 
@@ -46,19 +46,19 @@ public class Capacitando extends Model
   private Float rendaPerCapita;
 
   @Column(name="atualizacao_cadastral")
-  private LocalDate atualizacaoCadastral;
+  private Date atualizacaoCadastral;
 
   @Column(name="inicio_atividades")
-  private LocalDate inicioAtividades;
+  private Date inicioAtividades;
 
   @Column(name="status")
   private Boolean status;
 
   @Column(name="data_registro")
-  private LocalDate dataRegistro;
+  private Date dataRegistro;
 
   @Column(name="hora_registro")
-  private LocalTime horaRegistro;
+  private Time horaRegistro;
 
   @Column(name="area_atuacao")
   private AreaAtuacao areaAtuacao;
@@ -93,11 +93,11 @@ public class Capacitando extends Model
     this.responsavelFamilia = false;
     this.familia = BigInteger.valueOf(0);
     this.rendaPerCapita = Float.valueOf(0);
-    this.atualizacaoCadastral = LocalDate.now();
-    this.inicioAtividades = LocalDate.now();
+    this.atualizacaoCadastral = new Date();
+    this.inicioAtividades = new Date();
     this.status = false;
-    this.dataRegistro = LocalDate.now();
-    this.horaRegistro = LocalTime.now();
+    this.dataRegistro = new Date();
+    this.horaRegistro = new Time(System.currentTimeMillis());
     this.areaAtuacao = new AreaAtuacao();
     this.especialidade = new Especialidade();
     this.pessoa = new Pessoa();
@@ -118,16 +118,16 @@ public class Capacitando extends Model
   public void setFamilia(BigInteger familia) { this.familia = familia; }
   public Float getRendaPerCapita() { return this.rendaPerCapita; }
   public void setRendaPerCapita(Float rendaPerCapita) { this.rendaPerCapita = rendaPerCapita; }
-  public LocalDate getAtualizacaoCadastral() { return this.atualizacaoCadastral; }
-  public void setAtualizacaoCadastral(LocalDate atualizacaoCadastral) { this.atualizacaoCadastral = atualizacaoCadastral; }
-  public LocalDate getInicioAtividades() { return this.inicioAtividades; }
-  public void setInicioAtividades(LocalDate inicioAtividades) { this.inicioAtividades = inicioAtividades; }
+  public Date getAtualizacaoCadastral() { return this.atualizacaoCadastral; }
+  public void setAtualizacaoCadastral(Date atualizacaoCadastral) { this.atualizacaoCadastral = atualizacaoCadastral; }
+  public Date getInicioAtividades() { return this.inicioAtividades; }
+  public void setInicioAtividades(Date inicioAtividades) { this.inicioAtividades = inicioAtividades; }
   public Boolean getStatus() { return this.status; }
   public void setStatus(Boolean status) { this.status = status; }
-  public LocalDate getDataRegistro() { return this.dataRegistro; }
-  public void setDataRegistro(LocalDate dataRegistro) { this.dataRegistro = dataRegistro; }
-  public LocalTime getHoraRegistro() { return this.horaRegistro; }
-  public void setHoraRegistro(LocalTime horaRegistro) { this.horaRegistro = horaRegistro; }
+  public Date getDataRegistro() { return this.dataRegistro; }
+  public void setDataRegistro(Date dataRegistro) { this.dataRegistro = dataRegistro; }
+  public Time getHoraRegistro() { return this.horaRegistro; }
+  public void setHoraRegistro(Time horaRegistro) { this.horaRegistro = horaRegistro; }
   public AreaAtuacao getAreaAtuacao() { return this.areaAtuacao; }
   public void setAreaAtuacao(AreaAtuacao areaAtuacao) { this.areaAtuacao = areaAtuacao; }
   public Especialidade getEspecialidade() { return this.especialidade; }

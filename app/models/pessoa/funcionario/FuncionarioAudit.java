@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import models.Usuario;
 
@@ -27,7 +27,7 @@ public class FuncionarioAudit extends Model
   private Integer id;
 
   @Column(name="timestamp")
-  private LocalDateTime timestamp;
+  private Date timestamp;
 
   @ManyToOne
   @JoinColumn(name="auth_user_id", referencedColumnName="id")
@@ -43,15 +43,15 @@ public class FuncionarioAudit extends Model
 
   public FuncionarioAudit()
   {
-    this.timestamp = LocalDateTime.now();
+    this.timestamp = new Date();
     this.usuario = new Usuario();
     this.tipoAudit = new TipoAudit();
     this.cargo = new Cargo();
   }
 
   public Integer getId() { return this.id; }
-  public LocalDateTime getTimestamp() { return this.timestamp; }
-  public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
+  public Date getTimestamp() { return this.timestamp; }
+  public void setTimestamp(Date timestamp) { this.timestamp = timestamp; }
   public Usuario getUsuario() { return this.usuario; }
   public void setUsuario(Usuario usuario) { this.usuario = usuario; }
   public TipoAudit getTipoAudit() { return this.tipoAudit; }
