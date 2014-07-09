@@ -33,8 +33,8 @@ public class FuncionarioController extends Controller
    */
   private static List<Funcionario> obterListaFuncionarios()
   {
-    List<Funcionario> listaFuncionarios = Funcionario.find.where()
-      .orderBy("departamento_id");
+    List<Funcionario> listaFuncionarios = Funcionario.find
+      .orderBy("departamento_id").findList();
 
     return listaFuncionarios;
   }
@@ -45,8 +45,10 @@ public class FuncionarioController extends Controller
     for(Departamento departamento : DepartamentoController.obterListaDepartamento())
     {
       List<Funcionario> funcionariosNoDepartamento = Funcionario.find.where()
-        .eq("departamento_id", departamento.getId());
-      funcionariosPorDepartamento.append(funcionariosNoDepartamento);
+        .eq("departamento_id", departamento.getId()).findList();
+      funcionariosPorDepartamento.add(funcionariosNoDepartamento);
     }
+
+    return funcionariosPorDepartamento;
   }
 }
