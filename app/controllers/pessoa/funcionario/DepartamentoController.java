@@ -11,7 +11,7 @@ public class DepartamentoController extends Controller
 
   public static List<Departamento> obterListaDepartamento()
   {
-    List<Departamento> listaDepartamento = Departamento.find.all();
+    List<Departamento> listaDepartamento = Departamento.find.where().orderBy("id").asList();
 
     return listaDepartamento;
   }

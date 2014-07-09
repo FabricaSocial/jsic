@@ -10,6 +10,8 @@ import java.util.List;
 import models.pessoa.funcionario.Departamento;
 import models.pessoa.funcionario.Funcionario;
 
+import controllers.pessoa.funcionario.DepartamentoController;
+
 public class FuncionarioController extends Controller
 {
   /**
@@ -24,7 +26,6 @@ public class FuncionarioController extends Controller
     );
   }
 
-
   /**
    * Obtem a lista de todos os funcionários
    *
@@ -32,8 +33,20 @@ public class FuncionarioController extends Controller
    */
   private static List<Funcionario> obterListaFuncionarios()
   {
-    List<Funcionario> listaFuncionarios = Funcionario.find.all();
+    List<Funcionario> listaFuncionarios = Funcionario.find.where()
+      .orderBy("departamento_id");
 
     return listaFuncionarios;
+  }
+
+  private static List<List> obterFuncionariosPorDepartamento()
+  {
+    List<List> funcionariosPorDepartamento = null;
+    for(Departamento departamento : DepartamentoController.obterListaDepartamento())
+    {
+      List<Funcionario> funcionariosNoDepartamento = Funcionario.find.where()
+        .eq("departamento_id", departamento.getId());
+      funcionariosPorDepartamento.append(funcionariosNoDepartamento);
+    }
   }
 }

@@ -34,11 +34,13 @@
   <div class="row">
     <dl class="tabs vertical" data-tab>
       <dd><a href="#panel1a">DETI - 1234</a></dd>
-      <dd><a href="#panel2a">DECOC - 1234</a></dd>
     </dl>
     <div class="tabs-content vertical">
       <div class="content" id="panel1a">
         <div class="row" align="center">
+          @for(f <- listaFuncionarios){
+            @f
+          }
           <br>
           <table>
             <thead>
