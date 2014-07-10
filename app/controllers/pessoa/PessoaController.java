@@ -12,7 +12,7 @@ import static play.data.Form.form;
 
 public class PessoaController extends Controller
 {
-  public static void alterarDados()
+  public static Result alterarDados()
   {
     Form<Pessoa> formPessoa = form(Pessoa.class).bindFromRequest();
 
@@ -24,6 +24,8 @@ public class PessoaController extends Controller
     {
       pessoaNova.save();
     }
+
+    return TODO;
   }
 
   public static Result obtemPessoa(BigInteger cpf)
