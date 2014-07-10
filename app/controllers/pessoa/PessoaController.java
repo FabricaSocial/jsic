@@ -23,7 +23,7 @@ public class PessoaController extends Controller
 
     Pessoa pessoaNova = formPessoa.get();
 
-    pessoaAntiga =  pesquisaPessoaPorCPF(pessoa.getCpf());
+    Pessoa pessoaAntiga =  pesquisaPessoaPorCPF(pessoaNova.getCpf());
 
     if(pessoaAntiga != null)
     {
