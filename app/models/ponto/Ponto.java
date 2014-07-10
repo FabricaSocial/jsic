@@ -43,7 +43,7 @@ public class Ponto extends Model
   private Capacitando capacitando;
 
   @ManyToOne
-  @JoinColumn(name="user_id", referencedColumnName="id")
+  @JoinColumn(name="usuario_id", referencedColumnName="id")
   private Usuario usuario;
 
   public Ponto()

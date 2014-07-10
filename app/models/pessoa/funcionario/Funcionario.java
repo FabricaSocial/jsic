@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import models.pessoa.Pessoa;
+import models.Usuario;
 
 @Entity
 @Table(name="Funcionario")
@@ -43,12 +44,18 @@ public class Funcionario extends Model
   @JoinColumn(name="departamento_id", referencedColumnName="id")
   private Departamento departamento;
 
+  @OneToOne
+  @JoinColumn(name="usuario_id", referencedColumnName="id")
+  private Usuario usuario;
+
   public Funcionario()
   {
     this.matricula = 0;
     this.status = false;
     this.pessoa = new Pessoa();
     this.cargo = new Cargo();
+    this.departamento = new Departamento();
+    this.usuario = new Usuario();
   }
 
   public Integer getId() { return this.id; }
@@ -62,6 +69,8 @@ public class Funcionario extends Model
   public void setCargo(Cargo cargo) { this.cargo = cargo; }
   public Departamento getDepartamento() { return this.departamento; }
   public void setDepartamento(Departamento departamento) { this.departamento = departamento; }
+  public Usuario getUsuario() { return this.usuario; }
+  public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 
   public String toString()
   {

@@ -18,7 +18,7 @@ public class UsuarioController extends Controller
    */
   public static Usuario procuraPorNome(String nomeUsuario)
   {
-    return Usuario.find.where().eq("username", nomeUsuario).findUnique();
+    return Usuario.find.where().eq("nome_usuario", nomeUsuario).findUnique();
   }
 
   public static class formNovoUsuario{
@@ -95,7 +95,7 @@ public class UsuarioController extends Controller
     Usuario usuario = procuraPorNome(nomeUsuario);
     if(usuario != null)
     {
-      
+      usuario.delete();
     }
   }
 }

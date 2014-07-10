@@ -17,7 +17,7 @@ import javax.persistence.GenerationType;
 import java.util.Date;
 
 @Entity
-@Table(name="auth_user")
+@Table(name="Usuario")
 public class Usuario extends Model
 {
   private static final long serialVersionUID = 1L;
@@ -29,36 +29,33 @@ public class Usuario extends Model
 
   @Constraints.Required(message="Este campo é obrigatório")
   @Formats.NonEmpty
-  @Column(name="password")
+  @Column(name="senha")
   private String senha;
 
-  @Column(name="last_login")
+  @Column(name="ultimo_login")
   private Date ultimoLogin;
 
-  @Column(name="is_superuser")
+  @Column(name="superusuario")
   private Boolean superusuario;
 
   @Constraints.Required(message="Este campo é obrigatório")
   @Formats.NonEmpty
-  @Column(name="username",unique=true)
+  @Column(name="nome_usuario",unique=true)
   private String nomeUsuario;
 
-  @Column(name="first_name")
+  @Column(name="primeiro_nome")
   private String primeiroNome;
 
-  @Column(name="last_name")
+  @Column(name="ultimo_nome")
   private String ultimoNome;
 
   @Column(name="email")
   private String email;
 
-  @Column(name="is_staff")
-  private Boolean staff;
-
-  @Column(name="is_active")
+  @Column(name="ativo")
   private Boolean ativo;
 
-  @Column(name="date_joined")
+  @Column(name="data_criacao")
   private Date dataCriacao;
 
   public Usuario()
@@ -70,7 +67,6 @@ public class Usuario extends Model
     this.primeiroNome = "";
     this.ultimoNome = "";
     this.email = "";
-    this.staff = false;
     this.ativo = true;
     this.dataCriacao = new Date();
   }
@@ -90,12 +86,15 @@ public class Usuario extends Model
   public void setUltimoNome(String ultimoNome) { this.ultimoNome = ultimoNome; }
   public String getEmail() { return this.email; }
   public void setEmail(String email) { this.email = email; }
-  public Boolean getStaff() { return this.staff; }
-  public void setStaff(Boolean staff) { this.staff = staff; }
   public Boolean getAtivo() { return this.ativo; }
   public void setAtivo(Boolean ativo) { this.ativo = ativo; }
   public Date getDataCriacao() { return this.dataCriacao; }
   public void setDataCriacao(Date dataCriacao) { this.dataCriacao = dataCriacao; }
+
+  public String toString()
+  {
+    return getNomeUsuario();
+  }
 
   public static Finder<Integer,Usuario> find =
     new Finder<Integer,Usuario>(Integer.class,Usuario.class);
