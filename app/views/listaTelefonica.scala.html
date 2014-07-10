@@ -53,9 +53,9 @@
             <tbody>
               @for(funcionario <- departamentos){
                 <tr>
-                  <td>DETI</td>
-                  <td>Matheus Souza Fernandes</td>
-                  <td>111</td>
+                  <td>@funcionario.getDepartamento().getAbreviacao()</td>
+                  <td>@funcionario.getPessoa()</td>
+                  <td>@funcionario.getRamal()</td>
                 </tr>
               }
             </tbody>
@@ -63,9 +63,6 @@
         </div>
       </div>
       }
-      <div class="content" id="panel2a">
-        <p>Panel 2.</p>
-      </div>
 
     </div>
   </div>
