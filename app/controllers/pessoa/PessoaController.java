@@ -1,12 +1,14 @@
 package controllers.pessoa;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import java.math.BigInteger;
+import java.util.List;
+import models.pessoa.Pessoa;
+import play.data.Form;
+import play.libs.Json;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.data.Form;
-
-import java.math.BigInteger;
-
-import models.pessoa.Pessoa;
 
 import static play.data.Form.form;
 
@@ -54,6 +56,23 @@ public class PessoaController extends Controller
   }
 
   /**
+   * Realiza pesquisa de pessoa através do nome e obtem um JSON uma lista de dados
+   *
+   * @return objeto json de pessoa, por pesquisa através do nome
+   */
+  @BodyParser.Of(BodyParser.Json.class)
+  public static Result obtemPessoaJSON()
+  {
+    JsonNode json = request().body().asJson();
+    String nome = json.findPath("nome").textValue();
+
+    List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
+
+    System.out.println(listaPessoas.toString());
+    return ok(listaPessoas.toString());
+  }
+
+  /**
    * Realiza a pesquisa de pessoa por CPF
    *
    * @param cpf o CPF da pessoa que se deseja localizar
@@ -62,5 +81,16 @@ public class PessoaController extends Controller
   private static Pessoa pesquisaPessoaPorCPF(BigInteger cpf)
   {
     return Pessoa.find.where().eq("cpf",cpf).findUnique();
+  }
+
+  /**
+   * Realiza a pesquisa por parte de nome em Pessoa
+   *
+   * @param nome a parte do nome a ser usada na pesquisa por nome
+   * @return lista de pessoas que possuem a parte do nome informada no nome
+   */
+  private static List<Pessoa> pesquisaPessoaPorNome(String nome)
+  {
+    return Pessoa.find.where("nome like '%" + nome + "%'").findList();
   }
 }
