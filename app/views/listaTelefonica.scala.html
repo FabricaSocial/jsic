@@ -19,7 +19,8 @@
           <li class="has-form">
             <div class="row collapse">
               <div class="large-9 small-9 columns">
-                <input type="text" placeholder="Procurar Funcionário" style="height: auto !important;padding-top: .35rem !important;padding-bottom: .35rem !important;">
+                <input id="procurar_funcionario" type="text" placeholder="Procurar Funcionário" onfocus="selecionarTabBusca()"
+                style="height: auto !important;padding-top: .35rem !important;padding-bottom: .35rem !important;">
               </div>
               <div class="large-3 small-3 columns">
                 <a href="#" class="button expand">Buscar</a>
@@ -34,11 +35,19 @@
   
   <div class="row">
     <dl class="tabs vertical" data-tab>
+      <dd class="active"><a id="busca_tab" href="#pesquisa">Pesquisa</a></dd>
       @for(departamento <- departamentos){
         <dd><a href="#departamento@departamento.getId()">@departamento.getAbreviacao() - @departamento.getRamal()</a></dd>
       }
     </dl>
     <div class="tabs-content vertical">
+
+      <div class="content active" id="pesquisa">
+        <div class="row" align="center">
+          <p><h4>Para realizar um consulta por nome, utilize a pesquisa acima. </h4></p>
+        </div>
+      </div>
+
       @for(departamentos <- funcionarios){
       <div class="content" id="departamento@(funcionarios.indexOf(departamentos)+1)">
         <div class="row" align="center">
@@ -63,6 +72,20 @@
         </div>
       </div>
       }
+
+    <script type="text/javascript">
+      function selecionarTabBusca(){
+        console.log('teste');
+        $('#busca_tab').click();
+      }
+    </script>
+
+    <script type="text/javascript">
+      $('#procurar_funcionario').input(function(){
+          console.log('change');
+      });
+
+    </script>
 
     </div>
   </div>
