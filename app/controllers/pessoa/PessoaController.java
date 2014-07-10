@@ -62,18 +62,22 @@ public class PessoaController extends Controller
    * @return objeto json de pessoa, por pesquisa através do nome
    */
   @BodyParser.Of(BodyParser.Json.class)
-  public static Result obtemPessoaJSON()
+  public static Result obterPessoasJSON(String nome)
   {
-    JsonNode json = request().body().asJson();
     ObjectNode jsonResult = Json.newObject();
 
-    String nome = json.findPath("nome").textValue();
+    if(nome != null)
+    {
+      List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
 
-    List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
+      jsonResult.put("listaPessoas", listaPessoas.toString());
 
-    jsonResult.put("listaPessoas", listaPessoas.toString());
+      return ok(jsonResult);
+    }
 
-    return ok(jsonResult);
+    jsonResult.put("erro", "ERRO!");
+
+    return badRequest(jsonResult);
   }
 
   /**

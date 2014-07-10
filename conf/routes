@@ -6,6 +6,6 @@
 GET     /                           controllers.Application.index()
 GET     /telefones                  controllers.pessoa.funcionario.FuncionarioController.listar_telefones()
 POST    /                           controllers.Application.autenticar()
-
+GET     /listarPessoas/:nome              controllers.pessoa.PessoaController.obterPessoasJSON(nome : String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
