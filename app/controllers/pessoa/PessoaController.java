@@ -68,7 +68,6 @@ public class PessoaController extends Controller
 
     List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
 
-    System.out.println(listaPessoas.toString());
     return ok(listaPessoas.toString());
   }
 
