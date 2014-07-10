@@ -92,7 +92,7 @@ public class Pessoa extends Model
   public Date getDataNascimento() { return this.dataNascimento; }
   public void setDataNascimento(Date dataNascimento) { this.dataNascimento = dataNascimento; }
   public Boolean getSexo() { return this.sexo; }
-  public void setwexo(Boolean sexo) { this.sexo = sexo; }
+  public void setSexo(Boolean sexo) { this.sexo = sexo; }
   public Boolean getFilhos() { return this.filhos; }
   public void setFilhos(Boolean filhos) { this.filhos = filhos; }
   public String getFoto() { return this.foto; }
