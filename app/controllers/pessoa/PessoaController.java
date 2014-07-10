@@ -1,6 +1,7 @@
 package controllers.pessoa;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.math.BigInteger;
 import java.util.List;
 import models.pessoa.Pessoa;
@@ -64,11 +65,15 @@ public class PessoaController extends Controller
   public static Result obtemPessoaJSON()
   {
     JsonNode json = request().body().asJson();
+    ObjectNode jsonResult = Json.newObject();
+
     String nome = json.findPath("nome").textValue();
 
     List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
 
-    return ok(listaPessoas.toString());
+    jsonResult.put("listaPessoas", listaPessoas.toString());
+
+    return ok(jsonResult);
   }
 
   /**
