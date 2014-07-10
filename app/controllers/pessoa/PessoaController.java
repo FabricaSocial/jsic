@@ -16,14 +16,29 @@ public class PessoaController extends Controller
   {
     Form<Pessoa> formPessoa = form(Pessoa.class).bindFromRequest();
 
-    Pessoa pessoa = formPessoa.get();
+    Pessoa pessoaNova = formPessoa.get();
 
-    pessoa = obterPessoaPorCPF(pessoa.getCpf());
+    pessoaAntiga =  pesquisaPessoaPorCPF(pessoa.getCpf());
 
-    pessoa.save();
+    if(pessoaAntiga != null)
+    {
+      pessoaNova.save();
+    }
   }
 
-  private static Pessoa obterPessoaPorCPF(BigInteger cpf)
+  public static Result obtemPessoa(BigInteger cpf)
+  {
+    Pessoa pessoa = pesquisaPessoaPorCPF(cpf);
+
+    if(pessoa == null)
+    {
+      return TODO;
+    }
+
+    return TODO;
+  }
+
+  private static Pessoa pesquisaPessoaPorCPF(BigInteger cpf)
   {
     return Pessoa.find.where().eq("cpf",cpf).findUnique();
   }
