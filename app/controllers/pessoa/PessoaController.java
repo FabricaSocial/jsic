@@ -3,6 +3,7 @@ package controllers.pessoa;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import models.pessoa.Pessoa;
 import play.data.Form;
@@ -64,20 +65,32 @@ public class PessoaController extends Controller
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterPessoasJSON(String nome)
   {
-    ObjectNode jsonResult = Json.newObject();
+    ObjectNode retornoJson = Json.newObject();
+    List<Pessoa> listaPessoas = new ArrayList<Pessoa>();
 
     if(nome != null)
     {
-      List<Pessoa> listaPessoas = pesquisaPessoaPorNome(nome);
+      listaPessoas = pesquisaPessoaPorNome(nome);
 
-      jsonResult.put("listaPessoas", listaPessoas.toString());
+      if(listaPessoas.isEmpty())
+      {
+        retornoJson.put("pessoas", "Sua pesquisa não retornou resultado");
 
-      return ok(jsonResult);
+        return badRequest(retornoJson);
+      }
+
+      JsonNode listaPessoasJson = Json.toJson(listaPessoas);
+
+      retornoJson.put("pessoas", listaPessoasJson);
+
+      return ok(retornoJson);
+    }
+    else
+    {
+      retornoJson.put("pessoas", "É preciso informar um nome");
     }
 
-    jsonResult.put("erro", "ERRO!");
-
-    return badRequest(jsonResult);
+    return badRequest(retornoJson);
   }
 
   /**
@@ -99,6 +112,6 @@ public class PessoaController extends Controller
    */
   private static List<Pessoa> pesquisaPessoaPorNome(String nome)
   {
-    return Pessoa.find.where("nome like '%" + nome + "%'").findList();
+    return Pessoa.find.where("nome like '" + nome + "%'").findList();
   }
 }
