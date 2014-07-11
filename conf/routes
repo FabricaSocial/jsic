@@ -6,6 +6,8 @@
 GET     /                           controllers.Application.index()
 GET     /telefones                  controllers.pessoa.funcionario.FuncionarioController.listar_telefones()
 POST    /                           controllers.Application.autenticar()
+GET     /dashboard                  controllers.Application.dashboard()
+GET     /sair                       controllers.Application.sair()
 
 GET     /listarPessoas/:nome        controllers.pessoa.PessoaController.obterPessoasJSON(nome : String)
 GET     /listarDepartamentos/:nome  controllers.pessoa.funcionario.DepartamentoController.obterDepartamentosJSON(nome : String)

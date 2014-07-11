@@ -24,21 +24,42 @@ public class Application extends Controller
    */
   public static Result index()
   {
-    String nomeUsuario = ctx().session().get("nomeUsuario");
+    String nomeUsuario = session("conectado");
     if(nomeUsuario != null)
     {
       Usuario usuario = UsuarioController.procuraPorNome(nomeUsuario);
       if(usuario != null)
       {
-        return ok(dashboard.render());
+        return redirect( "/dashboard" );
       }
       else
       {
-        Logger.debug("Limpando credenciais inválidas");
         session().clear();
       }
     }
     return ok(index.render(form(Login.class)));
+  }
+
+  public static Result sair()
+  {
+    String nomeUsuario = session("conectado");
+    if(nomeUsuario != null)
+    {
+      session().clear();
+    }
+
+    return redirect( "/" );
+  }
+
+  public static Result dashboard()
+  {
+    String nomeUsuario = session("conectado");
+    if(nomeUsuario == null)
+    {
+      return redirect( "/" );
+    }
+
+    return ok(dashboard.render());
   }
 
   public static class Login
@@ -97,7 +118,9 @@ public class Application extends Controller
 
       if(valido == null)
       {
-        return ok(dashboard.render());
+        session("conectado",login.nomeUsuario);
+        flash("sucesso", "Você está conectado como " + login.nomeUsuario);
+        return redirect( "/dashboard" );
       }
     }
 

@@ -6,5 +6,23 @@
       </li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
+    @if(session().get("conectado")) {
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href=""></a>
+            <ul class="dropdown">
+              <li><a href="" data-revea-lid="modal_alterar_senha">Alterar Senha</a></li>
+            </ul>
+          </li>
+
+          <li class="divider"></li>
+
+          <li class="active">
+            <a href="/sair">Sair</a>
+          </li>
+        </ul>
+      </section>
+    }
   </nav>
 </div>
