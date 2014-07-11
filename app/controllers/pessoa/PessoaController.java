@@ -106,6 +106,6 @@ public class PessoaController extends Controller
    */
   private static List<Pessoa> pesquisaPessoaPorNome(String nome)
   {
-    return Pessoa.find.where("nome like '" + nome + "%'").findList();
+    return Pessoa.find.where("nome like '%" + nome + "%'").findList();
   }
 }

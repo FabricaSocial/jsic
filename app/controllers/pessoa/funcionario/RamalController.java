@@ -40,7 +40,7 @@ public class RamalController extends Controller
 
   private static List<Ramal> obterRamaisPorNomeDepartamento(String nome)
   {
-    List<Ramal> listaRamais = Ramal.find.where("departamento.descricao like '" + nome + "%'").findList();
+    List<Ramal> listaRamais = Ramal.find.where("departamento.descricao like '%" + nome + "%'").findList();
 
     return listaRamais;
   }

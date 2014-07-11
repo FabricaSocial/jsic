@@ -48,7 +48,7 @@ public class DepartamentoController extends Controller
 
   private static List<Departamento> obterListaDepartamentoPorNome(String nome)
   {
-    List<Departamento> listaDepartamento = Departamento.find.where("descricao like '" + nome + "%'").findList();
+    List<Departamento> listaDepartamento = Departamento.find.where("descricao like '%" + nome + "%'").findList();
 
     return listaDepartamento;
   }

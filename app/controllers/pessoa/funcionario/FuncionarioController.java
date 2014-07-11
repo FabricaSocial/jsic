@@ -82,7 +82,7 @@ public class FuncionarioController extends Controller
 
   private static List<Funcionario> obterFuncionariosPorNome(String nome)
   {
-    List<Funcionario> listaFuncionarios = Funcionario.find.where("pessoa.nome like '" + nome + "%'").findList();
+    List<Funcionario> listaFuncionarios = Funcionario.find.where("pessoa.nome like '%" + nome + "%'").findList();
 
     return listaFuncionarios;
   }
