@@ -1,17 +1,17 @@
 package controllers.pessoa.funcionario;
 
-import play.mvc.Controller;
-import play.mvc.Result;
-import play.db.ebean.*;
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import controllers.pessoa.funcionario.DepartamentoController;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import models.pessoa.funcionario.Departamento;
 import models.pessoa.funcionario.Funcionario;
-
-import controllers.pessoa.funcionario.DepartamentoController;
+import play.db.ebean.*;
+import play.libs.Json;
+import play.mvc.BodyParser;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 public class FuncionarioController extends Controller
 {
@@ -27,6 +27,31 @@ public class FuncionarioController extends Controller
     return ok(
         views.html.listaTelefonica.render(departamentos, funcionarios)
     );
+  }
+
+  @BodyParser.Of(BodyParser.Json.class)
+  public static Result obterFuncionariosJSON(String nome)
+  {
+    ObjectNode retornoJson = Json.newObject();
+    List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
+
+    if(nome != null)
+    {
+      listaFuncionarios = obterFuncionariosPorNome(nome);
+
+      if(listaFuncionarios.isEmpty())
+      {
+        return badRequest(retornoJson);
+      }
+
+      JsonNode listaFuncionariosJson = Json.toJson(listaFuncionarios);
+
+      retornoJson.put("funcionarios", listaFuncionariosJson);
+
+      return ok(retornoJson);
+    }
+
+    return badRequest(retornoJson);
   }
 
   /**
@@ -53,5 +78,12 @@ public class FuncionarioController extends Controller
     }
 
     return funcionariosPorDepartamento;
+  }
+
+  private static List<Funcionario> obterFuncionariosPorNome(String nome)
+  {
+    List<Funcionario> listaFuncionarios = Funcionario.find.where("pessoa.nome like '" + nome + "%'").findList();
+
+    return listaFuncionarios;
   }
 }

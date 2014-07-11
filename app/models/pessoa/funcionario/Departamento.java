@@ -32,16 +32,15 @@ public class Departamento extends Model
   @JoinColumn(name="coordenadoria_adjunta_id", referencedColumnName="id")
   private CoordenadoriaAdjunta coordenadoriaAdjunta;
 
-  @ManyToOne
-  @JoinColumn(name="ramal_id", referencedColumnName="id")
-  private Ramal ramal;
+  @Column(name="ramal")
+  public Integer ramal;
 
   public Departamento()
   {
     this.descricao = "";
     this.abreviacao = "";
     this.coordenadoriaAdjunta = new CoordenadoriaAdjunta();
-    this.ramal = new Ramal();
+    this.ramal = 0;
   }
 
   public Integer getId() { return this.id; }
@@ -52,8 +51,8 @@ public class Departamento extends Model
   public void setAbreviacao(String abreviacao) { this.abreviacao = abreviacao; }
   public CoordenadoriaAdjunta getCoordenadoriaAdjunta() { return this.coordenadoriaAdjunta; }
   public void setCoordenadoriaAdjunta(CoordenadoriaAdjunta coordenadoriaAdjunta) { this.coordenadoriaAdjunta = coordenadoriaAdjunta; }
-  public void setRamal(Ramal ramal) {this.ramal = ramal;}
-  public Ramal getRamal() {return this.ramal;}
+  public Integer getRamal() { return this.ramal; }
+  public void setRamal(Integer ramal) { this.ramal = ramal; }
 
   public String toString()
   {

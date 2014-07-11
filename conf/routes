@@ -9,5 +9,7 @@ POST    /                           controllers.Application.autenticar()
 
 GET     /listarPessoas/:nome        controllers.pessoa.PessoaController.obterPessoasJSON(nome : String)
 GET     /listarDepartamentos/:nome  controllers.pessoa.funcionario.DepartamentoController.obterDepartamentosJSON(nome : String)
+GET     /listarFuncionarios/:nome   controllers.pessoa.funcionario.FuncionarioController.obterFuncionariosJSON(nome : String)
+GET     /listarRamais/:nome         controllers.pessoa.funcionario.RamalController.obterRamaisJSON(nome : String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
