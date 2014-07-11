@@ -19,7 +19,9 @@
           <li class="has-form">
             <div class="row collapse">
               <div class="large-9 small-9 columns">
-                <input id="procurar_funcionario" type="text" placeholder="Procurar Funcionário" onfocus="selecionarTabBusca()"
+                <input id="procurar_funcionario" type="text" placeholder="Procurar Funcionário"
+                onfocus="selecionarTabBusca();"
+                onkeyup="buscaFuncionarios();"
                 style="height: auto !important;padding-top: .35rem !important;padding-bottom: .35rem !important;">
               </div>
               <div class="large-3 small-3 columns">
@@ -43,8 +45,8 @@
     <div class="tabs-content vertical">
 
       <div class="content active" id="pesquisa">
-        <div class="row" align="center">
-          <p><h4>Para realizar um consulta por nome, utilize a pesquisa acima. </h4></p>
+        <div class="row" align="center" id="divPesquisa">
+          <p><h4 id="mensagemBusca">Para realizar um consulta por nome, utilize a pesquisa acima. </h4></p>
         </div>
       </div>
 
@@ -75,16 +77,52 @@
 
     <script type="text/javascript">
       function selecionarTabBusca(){
-        console.log('teste');
         $('#busca_tab').click();
       }
     </script>
 
     <script type="text/javascript">
-      $('#procurar_funcionario').input(function(){
-          console.log('change');
-      });
+      function buscaFuncionarios(){
+        var nomeFuncionario = $('#procurar_funcionario').val();
+        
+        $.ajax({
+          type: "GET",
+          url: "/listarFuncionarios/" + nomeFuncionario,
+          dataType: "json",
+          success: function(lista){
+            var html = '<br>'+
+                        '<table>' +
+                          '<thead>' +
+                            '<th width="200">Departamento</th>' +
+                            '<th width="400">Nome</th>' +
+                            '<th width="100">Ramal</th>' +
+                          '</thead>' +
+                          '<tbody>';
 
+            $.each(lista.funcionarios, function(i, funcionario){
+              html = html + '<tr>' +
+                              '<td>' + funcionario.departamento.abreviacao + '</td>' +
+                              '<td>' + funcionario.pessoa.nome + '</td>' +
+                              '<td>' + funcionario.ramal.ramal + '</td>' +
+                            '</tr>';
+            })
+
+            html = html + '</tbody></table>';
+
+            $('#divPesquisa').html(html);
+          },
+          error: function(){
+
+            $('#divPesquisa').html('<p><h4 id="mensagemBusca">Para realizar um consulta por nome, utilize a pesquisa acima. </h4></p>');
+
+            if(nomeFuncionario == ""){
+              $('#mensagemBusca').html("Para realizar um consulta por nome, utilize a pesquisa acima.");
+            } else {
+              $('#mensagemBusca').html("Desculpe.. Não encontramos nenhum funcionário com o nome: " + nomeFuncionario);
+            }
+          }
+        })
+      }
     </script>
 
     </div>
