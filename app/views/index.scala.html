@@ -10,14 +10,18 @@
         'placeholder -> "Usuário",
         '_label -> null,
         '_help -> "",
-        'class -> "form-control"
+        'class -> "form-control",
+        '_showErrors -> false,
+        'required -> true
       )
       @helper.inputPassword(
         formLogin("senha"),
         'placeholder -> "Senha",
         '_label -> null,
         '_help -> "",
-        'class -> "form-control"
+        'class -> "form-control",
+        '_showErrors -> false,
+        'required -> true
       )
 
       <button class="postfix radius">Entrar</button>

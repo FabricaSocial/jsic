@@ -1,12 +1,11 @@
 package controllers;
 
-import play.mvc.Controller;
-import play.data.validation.Constraints;
-
-
 import models.Usuario;
 import models.utils.AppException;
 import models.utils.Hash;
+import play.data.validation.Constraints;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 public class UsuarioController extends Controller
 {
@@ -35,18 +34,12 @@ public class UsuarioController extends Controller
    * @param senha string contendo a senha não-criptografada do novo usuário
    * @return o novo usuário criado
    */
-  public static Usuario novoUsuario(String nomeUsuario, String senha)
+  public static Result novoUsuario()
     throws AppException
   {
     Usuario usuario = new Usuario();
 
-    usuario.setNomeUsuario(nomeUsuario);
-
-    usuario.save();
-
-    mudaSenha(nomeUsuario, senha);
-
-    return usuario;
+    return ok();
   }
 
   /**
