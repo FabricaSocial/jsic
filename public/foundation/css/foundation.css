@@ -2495,6 +2495,7 @@ blockquote p {
   .show-for-print {
     display: inherit !important; } }
 .tabs {
+  height: 3rem;
   margin-bottom: 0 !important;
   margin-left: 0; }
   .tabs:before, .tabs:after {
@@ -2503,11 +2504,13 @@ blockquote p {
   .tabs:after {
     clear: both; }
   .tabs dd, .tabs .tab-title {
+    height: 100%;
     position: relative;
     margin-bottom: 0 !important;
     list-style: none;
     float: left; }
     .tabs dd > a, .tabs .tab-title > a {
+      height: 100%;
       display: block;
       background: #474747;
       color: white;
