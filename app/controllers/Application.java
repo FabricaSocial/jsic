@@ -10,6 +10,7 @@ import models.Usuario;
 import models.utils.AppException;
 
 import views.html.index;
+import views.html.dashboard;
 
 import static play.data.Form.form;
 
@@ -29,7 +30,7 @@ public class Application extends Controller
       Usuario usuario = UsuarioController.procuraPorNome(nomeUsuario);
       if(usuario != null)
       {
-        return TODO;
+        return ok(dashboard.render());
       }
       else
       {
@@ -96,7 +97,7 @@ public class Application extends Controller
 
       if(valido == null)
       {
-        return TODO;
+        return ok(dashboard.render());
       }
     }
 
