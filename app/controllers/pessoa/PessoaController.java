@@ -74,8 +74,6 @@ public class PessoaController extends Controller
 
       if(listaPessoas.isEmpty())
       {
-        retornoJson.put("pessoas", "Sua pesquisa não retornou resultado");
-
         return badRequest(retornoJson);
       }
 
@@ -84,10 +82,6 @@ public class PessoaController extends Controller
       retornoJson.put("pessoas", listaPessoasJson);
 
       return ok(retornoJson);
-    }
-    else
-    {
-      retornoJson.put("pessoas", "É preciso informar um nome");
     }
 
     return badRequest(retornoJson);
