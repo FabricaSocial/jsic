@@ -69,7 +69,13 @@
             )
           </div>
         </div>
-        
+
+        @helper.select(
+          funcionarioConectado("pessoa.etnia"),
+          Etnia.find.all().map{ etnia => etnia.getId().toString() -> etnia.getDescricao() },
+          '_label -> "Etnia"
+        )
+
         @helper.inputFile(
           funcionarioConectado("pessoa.foto"),
           'type -> "checkbox",
@@ -77,13 +83,6 @@
           '_help -> "",
           '_showErrors -> false,
           'required -> true
-        )
-
-        @helper.select(
-          funcionarioConectado("pessoa.etnia"),
-          options = Etnia.find.all(),
-          '_label -> "Etnia",
-          '_default -> "First Available"
         )
 
         </div>
