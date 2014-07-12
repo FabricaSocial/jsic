@@ -11,6 +11,8 @@ import play.mvc.Security;
 import views.html.dashboard;
 import views.html.index;
 
+import static play.data.Form.form;
+
 public class Application extends Controller
 {
   /**
