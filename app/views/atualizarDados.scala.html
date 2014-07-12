@@ -1,4 +1,5 @@
 @import models.pessoa.funcionario.Funcionario
+@import models.pessoa.Etnia
 @(funcionarioConectado : Form[Funcionario])
 
 @main("Atualizar Dados | SIC"){
@@ -78,7 +79,12 @@
           'required -> true
         )
 
-        
+        @helper.select(
+          funcionarioConectado("pessoa.etnia"),
+          options = Etnia.find.all(),
+          '_label -> "Etnia",
+          '_default -> "First Available"
+        )
 
         </div>
         <div class="large-2 small-1 columns">
