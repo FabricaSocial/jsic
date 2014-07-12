@@ -13,6 +13,7 @@ import views.html.index;
 import views.html.dashboard;
 
 import static play.data.Form.form;
+import play.mvc.Security;
 
 public class Application extends Controller
 {
@@ -22,15 +23,12 @@ public class Application extends Controller
    *
    * @return redireciona para o dashboard ou recarrega a paǵina de login, caso haja erro no login
    */
+
   public static Result index()
   {
-    if(verificarSessao())
+    if(session("conectado") != null)
     {
       return redirect( "/dashboard" );
-    }
-    else
-    {
-      limparSessao();
     }
 
     return ok(index.render(form(Login.class)));
@@ -41,9 +39,10 @@ public class Application extends Controller
     return limparSessao();
   }
 
+  @Security.Authenticated(Secured.class)
   public static Result dashboard()
   {
-    return verificarSessao() ? ok(dashboard.render()) : redirect("/");
+    return ok(dashboard.render());
   }
 
   public static class Login
@@ -110,13 +109,6 @@ public class Application extends Controller
     return badRequest(index.render(formLogin));
   }
 
-  public static Boolean verificarSessao()
-  {
-    String usuarioConectado = session("conectado");
-
-    return usuarioConectado != null ? true : false;
-  }
-
   public static Result limparSessao()
   {
     session().clear();
@@ -124,10 +116,8 @@ public class Application extends Controller
     return redirect( "/" );
   }
 
-  public static Boolean iniciaSessao(String nomeUsuario)
+  public static void iniciaSessao(String nomeUsuario)
   {
     session("conectado", nomeUsuario);
-
-    return verificarSessao();
   }
 }

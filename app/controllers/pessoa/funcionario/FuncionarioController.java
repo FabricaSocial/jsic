@@ -17,6 +17,9 @@ import play.mvc.Result;
 
 import views.html.atualizarDados;
 
+import controllers.Secured;
+import play.mvc.Security;
+
 import static play.data.Form.form;
 
 public class FuncionarioController extends Controller
@@ -26,6 +29,8 @@ public class FuncionarioController extends Controller
    *
    * @return a lista de funcionários a ser utilizada na view
    */
+
+  @Security.Authenticated(Secured.class)
   public static Result listar_telefones()
   {
     List<Departamento> departamentos = DepartamentoController.obterListaDepartamento();
@@ -40,6 +45,7 @@ public class FuncionarioController extends Controller
    *
    * @return retorna para painel de opções ou página de alteração de dados de pessoa, caso haja erro
    */
+  @Security.Authenticated(Secured.class)
   public static Result alterarDados()
   {
     Form<Funcionario> formFuncionario = form(Funcionario.class).bindFromRequest();
@@ -60,6 +66,7 @@ public class FuncionarioController extends Controller
     return TODO;
   }
 
+  @Security.Authenticated(Secured.class)
   public static Result formularioFuncionario()
   {
     Funcionario funcionarioConectado = obterFuncionarioPorNomeUsuario(session("conectado"));
@@ -71,6 +78,7 @@ public class FuncionarioController extends Controller
     return ok(atualizarDados.render(formFuncionario));
   }
 
+  @Security.Authenticated(Secured.class)
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterFuncionariosJSON(String nome)
   {

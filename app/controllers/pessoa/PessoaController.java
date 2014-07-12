@@ -11,6 +11,8 @@ import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import controllers.Secured;
+import play.mvc.Security;
 
 import static play.data.Form.form;
 
@@ -22,6 +24,8 @@ public class PessoaController extends Controller
    * @param cpf o CPF da pessoa que se deseja localizar
    * @return a pessoa que deseja obter a partir do CPF ou badRequest, em caso de erro
    */
+
+  @Security.Authenticated(Secured.class)
   public static Result obtemPessoa(BigInteger cpf)
   {
     Pessoa pessoa = pesquisaPessoaPorCPF(cpf);
@@ -39,6 +43,8 @@ public class PessoaController extends Controller
    *
    * @return objeto json de pessoa, por pesquisa através do nome
    */
+
+  @Security.Authenticated(Secured.class)
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterPessoasJSON(String nome)
   {

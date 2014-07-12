@@ -9,10 +9,13 @@ import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import controllers.Secured;
+import play.mvc.Security;
 
 public class DepartamentoController extends Controller
 {
 
+  @Security.Authenticated(Secured.class)
   public static List<Departamento> obterListaDepartamento()
   {
     List<Departamento> listaDepartamento = Departamento.find.orderBy("id").findList();
@@ -20,6 +23,7 @@ public class DepartamentoController extends Controller
     return listaDepartamento;
   }
 
+  @Security.Authenticated(Secured.class)
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterDepartamentosJSON(String nome)
   {

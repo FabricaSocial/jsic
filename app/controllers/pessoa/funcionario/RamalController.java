@@ -9,10 +9,13 @@ import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import controllers.Secured;
+import play.mvc.Security;
 
 public class RamalController extends Controller
 {
 
+  @Security.Authenticated(Secured.class)
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterRamaisJSON(String nome)
   {

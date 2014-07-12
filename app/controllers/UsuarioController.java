@@ -7,6 +7,9 @@ import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import play.mvc.Security;
+import views.html.alterarSenha;
+
 public class UsuarioController extends Controller
 {
   /**
@@ -65,30 +68,55 @@ public class UsuarioController extends Controller
     return null;
   }
 
+  @Security.Authenticated(Secured.class)
+  public static Result atualizarSenha()
+    throws AppException
+  {
+    return ok(alterarSenha.render());
+  }
+
   /**
    * Altera a senha de um usuário existente
    *
    * @param nomeUsuario string contendo o nome de usuário o qual deseja-se mudar a senha
    * @param senha string contendo a nova senha não-criptografada do usuário
    */
-  public static void mudaSenha(String nomeUsuario, String senha)
+
+  @Security.Authenticated(Secured.class)
+  public static Result mudaSenha(String senhaAntiga, String senhaNova)
     throws AppException
   {
-    Usuario usuario = procuraPorNome(nomeUsuario);
+    Usuario usuario = procuraPorNome(session("conectado"));
     if(usuario != null)
     {
-      usuario.setSenha(Hash.criarSenha(senha));
-      usuario.save();
+      if(Hash.checaSenha(senhaAntiga, usuario.getSenha()))
+      {
+        usuario.setSenha(Hash.criarSenha(senhaNova));
+        usuario.save();
+
+        return ok(alterarSenha.render());
+      }
+      else
+      {
+        return badRequest(alterarSenha.render());
+      }
     }
+
+    return badRequest(alterarSenha.render());
   }
 
-  public static void deletaUsuario(String nomeUsuario)
+  @Security.Authenticated(Secured.class)
+  public static Result deletaUsuario()
     throws AppException
   {
-    Usuario usuario = procuraPorNome(nomeUsuario);
+    Usuario usuario = procuraPorNome(session("conectado"));
     if(usuario != null)
     {
       usuario.delete();
+
+      return ok();
     }
+
+    return badRequest();
   }
 }
