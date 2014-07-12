@@ -64,6 +64,7 @@ public class Funcionario extends Model
   }
 
   public Integer getId() { return this.id; }
+  public void setId(Integer id) { this.id = id; }
   public Integer getMatricula() { return this.matricula; }
   public void setMatricula(Integer matricula) { this.matricula = matricula; }
   public Boolean getStatus() { return this.status; }

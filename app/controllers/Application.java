@@ -24,42 +24,26 @@ public class Application extends Controller
    */
   public static Result index()
   {
-    String nomeUsuario = session("conectado");
-    if(nomeUsuario != null)
+    if(verificarSessao())
     {
-      Usuario usuario = UsuarioController.procuraPorNome(nomeUsuario);
-      if(usuario != null)
-      {
-        return redirect( "/dashboard" );
-      }
-      else
-      {
-        session().clear();
-      }
+      return redirect( "/dashboard" );
     }
+    else
+    {
+      limparSessao();
+    }
+
     return ok(index.render(form(Login.class)));
   }
 
   public static Result sair()
   {
-    String nomeUsuario = session("conectado");
-    if(nomeUsuario != null)
-    {
-      session().clear();
-    }
-
-    return redirect( "/" );
+    return limparSessao();
   }
 
   public static Result dashboard()
   {
-    String nomeUsuario = session("conectado");
-    if(nomeUsuario == null)
-    {
-      return redirect( "/" );
-    }
-
-    return ok(dashboard.render());
+    return verificarSessao() ? ok(dashboard.render()) : redirect("/");
   }
 
   public static class Login
@@ -118,8 +102,7 @@ public class Application extends Controller
 
       if(valido == null)
       {
-        session("conectado",login.nomeUsuario);
-        flash("sucesso", "Você está conectado como " + login.nomeUsuario);
+        iniciaSessao(login.nomeUsuario);
         return redirect( "/dashboard" );
       }
     }
@@ -127,4 +110,24 @@ public class Application extends Controller
     return badRequest(index.render(formLogin));
   }
 
+  public static Boolean verificarSessao()
+  {
+    String usuarioConectado = session("conectado");
+
+    return usuarioConectado != null ? true : false;
+  }
+
+  public static Result limparSessao()
+  {
+    session().clear();
+
+    return redirect( "/" );
+  }
+
+  public static Boolean iniciaSessao(String nomeUsuario)
+  {
+    session("conectado", nomeUsuario);
+
+    return verificarSessao();
+  }
 }

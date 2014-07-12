@@ -3,15 +3,19 @@ package controllers.pessoa.funcionario;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import controllers.pessoa.funcionario.DepartamentoController;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import models.pessoa.funcionario.Departamento;
 import models.pessoa.funcionario.Funcionario;
 import play.db.ebean.*;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import static play.data.Form.form;
 
 public class FuncionarioController extends Controller
 {
@@ -36,15 +40,17 @@ public class FuncionarioController extends Controller
    */
   public static Result alterarDados()
   {
-    Form<Pessoa> formPessoa = form(Pessoa.class).bindFromRequest();
+    Form<Funcionario> formFuncionario = form(Funcionario.class).bindFromRequest();
 
-    Pessoa pessoaNova = formPessoa.get();
+    Funcionario funcionarioNovo = formFuncionario.get();
 
-    Pessoa pessoaAntiga =  pesquisaPessoaPorCPF(pessoaNova.getCpf());
+    Funcionario funcionarioAntigo =  obterFuncionarioPorCPF(funcionarioNovo.getPessoa().getCpf());
 
-    if(pessoaAntiga != null)
+    if(funcionarioAntigo != null)
     {
-      pessoaNova.save();
+      funcionarioNovo.setId(funcionarioAntigo.getId());
+
+      funcionarioNovo.save();
 
       return TODO;
     }
@@ -108,5 +114,10 @@ public class FuncionarioController extends Controller
     List<Funcionario> listaFuncionarios = Funcionario.find.where("pessoa.nome like '%" + nome + "%'").findList();
 
     return listaFuncionarios;
+  }
+
+  private static Funcionario obterFuncionarioPorCPF(BigInteger cpf)
+  {
+    return Funcionario.find.where().eq("pessoa.cpf", cpf).findUnique();
   }
 }
