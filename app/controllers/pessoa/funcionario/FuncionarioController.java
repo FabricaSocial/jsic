@@ -15,6 +15,8 @@ import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import views.html.atualizarDados;
+
 import static play.data.Form.form;
 
 public class FuncionarioController extends Controller
@@ -56,6 +58,17 @@ public class FuncionarioController extends Controller
     }
 
     return TODO;
+  }
+
+  public static Result formularioFuncionario()
+  {
+    Funcionario funcionarioConectado = obterFuncionarioPorNomeUsuario(session("conectado"));
+
+    Form<Funcionario> formFuncionario = Form.form(Funcionario.class);
+
+    formFuncionario = formFuncionario.fill(funcionarioConectado);
+
+    return ok(atualizarDados.render(formFuncionario));
   }
 
   @BodyParser.Of(BodyParser.Json.class)
@@ -119,5 +132,10 @@ public class FuncionarioController extends Controller
   private static Funcionario obterFuncionarioPorCPF(BigInteger cpf)
   {
     return Funcionario.find.where().eq("pessoa.cpf", cpf).findUnique();
+  }
+
+  private static Funcionario obterFuncionarioPorNomeUsuario(String nomeUsuario)
+  {
+    return Funcionario.find.where().eq("usuario.nomeUsuario", nomeUsuario).findUnique();
   }
 }
