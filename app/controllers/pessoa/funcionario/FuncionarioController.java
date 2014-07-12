@@ -29,6 +29,29 @@ public class FuncionarioController extends Controller
     );
   }
 
+    /**
+   * Altera os dados de uma pessoa existente, recebendo os dados de um formulário na tela
+   *
+   * @return retorna para painel de opções ou página de alteração de dados de pessoa, caso haja erro
+   */
+  public static Result alterarDados()
+  {
+    Form<Pessoa> formPessoa = form(Pessoa.class).bindFromRequest();
+
+    Pessoa pessoaNova = formPessoa.get();
+
+    Pessoa pessoaAntiga =  pesquisaPessoaPorCPF(pessoaNova.getCpf());
+
+    if(pessoaAntiga != null)
+    {
+      pessoaNova.save();
+
+      return TODO;
+    }
+
+    return TODO;
+  }
+
   @BodyParser.Of(BodyParser.Json.class)
   public static Result obterFuncionariosJSON(String nome)
   {

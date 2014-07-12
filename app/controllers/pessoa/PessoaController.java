@@ -17,29 +17,6 @@ import static play.data.Form.form;
 public class PessoaController extends Controller
 {
   /**
-   * Altera os dados de uma pessoa existente, recebendo os dados de um formulário na tela
-   *
-   * @return retorna para painel de opções ou página de alteração de dados de pessoa, caso haja erro
-   */
-  public static Result alterarDados()
-  {
-    Form<Pessoa> formPessoa = form(Pessoa.class).bindFromRequest();
-
-    Pessoa pessoaNova = formPessoa.get();
-
-    Pessoa pessoaAntiga =  pesquisaPessoaPorCPF(pessoaNova.getCpf());
-
-    if(pessoaAntiga != null)
-    {
-      pessoaNova.save();
-
-      return TODO;
-    }
-
-    return TODO;
-  }
-
-  /**
    * Obtem pessoa a partir de seu CPF
    *
    * @param cpf o CPF da pessoa que se deseja localizar
