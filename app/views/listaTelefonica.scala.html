@@ -38,7 +38,7 @@
     <dl class="tabs vertical" data-tab>
       <dd class="active"><a id="busca_tab" href="#pesquisa">Pesquisa</a></dd>
       @for(departamento <- departamentos){
-        <dd><a href="#departamento@departamento.getId()">@departamento.getAbreviacao() - @departamento.getRamal()</a></dd>
+        <dd><a href="#departamento@departamento.getId()"><b>@departamento.getRamal()</b> - @departamento.getAbreviacao()</a></dd>
       }
     </dl>
     <div class="tabs-content vertical">

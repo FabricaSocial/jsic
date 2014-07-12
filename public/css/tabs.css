@@ -1,0 +1,39 @@
+/* TABS */
+.tabs {
+  *zoom: 1;
+  margin-bottom: 0 !important; }
+  .tabs:before, .tabs:after {
+    content: " ";
+    display: table; }
+  .tabs:after {
+    clear: both; }
+  .tabs dd {
+    width: 180px;
+    position: relative;
+    text-align: justify;
+    vertical-align: middle;
+    margin-bottom: 0 !important;
+    float: left; }
+    .tabs dd > a {
+      display: block;
+      background: #383838;
+      color: white;
+      padding: 0.3rem 2rem;
+      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-size: 1rem; }
+      .tabs dd > a:hover {
+        background: #222; }
+    .tabs dd.active a {
+      background: #e3e3e3;
+      color: #333 }
+  .tabs.radius dd:first-child a {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px; }
+  .tabs.radius dd:last-child a {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px; }
+  .tabs.vertical dd {
+    position: inherit;
+    float: none;
+    display: block;
+    top: auto; }
