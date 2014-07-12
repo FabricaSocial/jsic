@@ -1,7 +1,5 @@
 package models.pessoa.funcionario;
 
-import play.db.ebean.Model;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import models.pessoa.Pessoa;
 import models.Usuario;
+import models.pessoa.Pessoa;
+import play.db.ebean.Model;
 
 @Entity
 @Table(name="Funcionario")

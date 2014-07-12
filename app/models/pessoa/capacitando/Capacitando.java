@@ -1,7 +1,8 @@
 package models.pessoa.capacitando;
 
-import play.db.ebean.Model;
-
+import java.math.BigInteger;
+import java.sql.Time;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,13 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import java.math.BigInteger;
-
-import java.sql.Time;
-import java.util.Date;
-
 import models.pessoa.Pessoa;
+import play.db.ebean.Model;
 
 @Entity
 @Table(name="Capacitando")

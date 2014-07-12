@@ -1,15 +1,13 @@
 package models.pessoa.capacitando;
 
-import play.db.ebean.Model;
-
+import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import java.sql.Time;
+import play.db.ebean.Model;
 
 @Entity
 @Table(name="Turno")

@@ -1,19 +1,15 @@
 package controllers;
 
+import models.Usuario;
+import models.utils.AppException;
 import play.Logger;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import models.Usuario;
-import models.utils.AppException;
-
-import views.html.index;
-import views.html.dashboard;
-
-import static play.data.Form.form;
 import play.mvc.Security;
+import views.html.dashboard;
+import views.html.index;
 
 public class Application extends Controller
 {

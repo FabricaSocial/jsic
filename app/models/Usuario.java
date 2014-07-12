@@ -1,20 +1,17 @@
 package models;
 
-import models.utils.AppException;
-import models.utils.Hash;
-
-import play.db.ebean.Model;
-import play.data.format.Formats;
-import play.data.validation.Constraints;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import java.util.Date;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import models.utils.AppException;
+import models.utils.Hash;
+import play.data.format.Formats;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
 
 @Entity
 @Table(name="Usuario")

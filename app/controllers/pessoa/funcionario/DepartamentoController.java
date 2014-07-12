@@ -2,6 +2,7 @@ package controllers.pessoa.funcionario;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import controllers.Secured;
 import java.util.ArrayList;
 import java.util.List;
 import models.pessoa.funcionario.Departamento;
@@ -9,7 +10,6 @@ import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
-import controllers.Secured;
 import play.mvc.Security;
 
 public class DepartamentoController extends Controller
