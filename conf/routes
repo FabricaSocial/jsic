@@ -10,6 +10,7 @@ GET     /dashboard                  controllers.Application.dashboard()
 GET     /sair                       controllers.Application.sair()
 GET     /atualizar/senha            controllers.UsuarioController.atualizarSenha()
 GET     /atualizar/dados            controllers.pessoa.funcionario.FuncionarioController.formularioFuncionario()
+POST    /atualizarDados             controllers.pessoa.funcionario.FuncionarioController.alterarDados()
 
 # JSON
 GET     /listarPessoas/:nome        controllers.pessoa.PessoaController.obterPessoasJSON(nome : String)

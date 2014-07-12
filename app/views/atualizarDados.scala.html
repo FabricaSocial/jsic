@@ -6,5 +6,88 @@
     <h2>Atualizar Dados</h2><hr>
   </div>
 
-  
+  <div class="row">
+    <div class="large-2 small-1 columns">
+      <p></p>
+    </div>
+    <div class="large-8 small-10 columns">
+      <p><h3>Dados Pessoais</h3><hr></p>
+
+      @helper.form(action=controllers.pessoa.funcionario.routes.FuncionarioController.alterarDados()){
+        <div class="large-2 small-1 columns">
+          <p></p>
+        </div>
+        <div class="large-8 small-10 columns">
+        @helper.inputText(
+          funcionarioConectado("pessoa.cpf"),
+          'placeholder -> "CPF",
+          '_label -> "CPF:",
+          '_help -> "",
+          '_showErrors -> false,
+          'required -> true
+        )        
+
+        @helper.inputText(
+          funcionarioConectado("pessoa.nome"),
+          'placeholder -> "Nome Completo",
+          '_label -> "Nome:",
+          '_help -> "",
+          '_showErrors -> false,
+          'required -> true
+        )
+
+        <div class="row">
+          <div class="large-6 small-6 columns">
+            @helper.inputDate(
+              funcionarioConectado("pessoa.data_nascimento"),
+              'placeholder -> "Data de Nascimento",
+              '_label -> "Data de Nascimento:",
+              '_help -> "",
+              '_showErrors -> false,
+              'required -> true
+            )
+          </div>
+          <div class="large-4 small-4 columns">
+            @helper.inputText(
+              funcionarioConectado("pessoa.sexo"),
+              'placeholder -> "Sexo",
+              '_label -> "Sexo:",
+              '_help -> "",
+              '_showErrors -> false,
+              'required -> true
+            )
+          </div>
+          <div class="large-2 small-2 columns">
+            @helper.inputText(
+              funcionarioConectado("pessoa.filhos"),
+              'type -> "checkbox",
+              '_label -> "Filhos:",
+              '_help -> "",
+              '_showErrors -> false,
+              'required -> true
+            )
+          </div>
+        </div>
+        
+        @helper.inputFile(
+          funcionarioConectado("pessoa.foto"),
+          'type -> "checkbox",
+          '_label -> "Foto:",
+          '_help -> "",
+          '_showErrors -> false,
+          'required -> true
+        )
+
+        
+
+        </div>
+        <div class="large-2 small-1 columns">
+          <p></p>
+        </div>
+      }
+    </div>
+    <div class="large-2 small-1 columns">
+      <p></p>
+    </div>
+  </div>
 }
