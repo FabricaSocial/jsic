@@ -2,36 +2,75 @@
 .tabs {
   *zoom: 1;
   margin-bottom: 0 !important; }
+
+.tabs.vertical {
+  width: 18rem;
+  *zoom: 1;
+  margin-bottom: 0 !important; }
+
+.tabs.horizontal {
+  background: #272727;
+  *zoom: 1;
+  margin-bottom: 0 !important; }
+
   .tabs:before, .tabs:after {
     content: " ";
     display: table; }
+
   .tabs:after {
     clear: both; }
-  .tabs dd {
-    width: 180px;
+
+  .tabs.horizontal dd {
+    width: 10rem;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 0 !important;
+    float: left; }
+
+  .tabs.vertical dd {
+    width: 100%;
     position: relative;
     text-align: justify;
     vertical-align: middle;
     margin-bottom: 0 !important;
     float: left; }
-    .tabs dd > a {
+
+    .tabs.horizontal dd > a {
+      display: block;
+      background: #272727;
+      color: white;
+      padding: 0.3rem 2rem;
+      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-size: 1rem; }
+
+    .tabs.vertical dd > a  {
       display: block;
       background: #383838;
       color: white;
       padding: 0.3rem 2rem;
       font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
       font-size: 1rem; }
-      .tabs dd > a:hover {
+
+
+      .tabs.horizontal dd > a:hover {
+        background: #333; }
+
+      .tabs.vertical dd > a:hover {
         background: #222; }
-    .tabs dd.active a {
+
+    .tabs.vertical dd.active a {
       background: #e3e3e3;
       color: #333 }
+
   .tabs.radius dd:first-child a {
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
+
   .tabs.radius dd:last-child a {
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
+
   .tabs.vertical dd {
     position: inherit;
     float: none;

@@ -11,7 +11,7 @@
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"></a></li>
         </ul>
-    
+
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
@@ -33,12 +33,20 @@
       </section>
     </nav>
   </div>
-  
+
+
+
   <div class="row">
     <dl class="tabs vertical" data-tab>
-      <dd class="active"><a id="busca_tab" href="#pesquisa">Pesquisa</a></dd>
+      <dd class="active"><a id="busca_tab" href="#pesquisa" align="center">Departamentos</a></dd>
       @for(departamento <- departamentos){
-        <dd><a href="#departamento@departamento.getId()"><b>@departamento.getRamal()</b> - @departamento.getAbreviacao()</a></dd>
+        <dd><a href="#departamento@departamento.getId()">
+          <div class="row">
+            <div class="large-10 columns" align="left">@departamento.getDescricao()</div>
+            <div class="large-2 columns" align="center"><b>@departamento.getRamal()</b></div>
+          </div>
+          </a>
+        </dd>
       }
     </dl>
     <div class="tabs-content vertical">
@@ -55,7 +63,6 @@
           <br>
           <table>
             <thead>
-              <th width="200">Departamento</th>
               <th width="400">Nome</th>
               <th width="100">Ramal</th>
             </thead>
@@ -63,7 +70,6 @@
             <tbody>
               @for(funcionario <- departamentos){
                 <tr>
-                  <td>@funcionario.getDepartamento().getAbreviacao()</td>
                   <td>@funcionario.getPessoa()</td>
                   <td>@funcionario.getRamal()</td>
                 </tr>
@@ -83,7 +89,7 @@
     <script type="text/javascript">
       function buscaFuncionarios(){
         var nomeFuncionario = $('#procurar_funcionario').val();
-        
+
         $.ajax({
           type: "GET",
           url: "/listarFuncionarios/" + nomeFuncionario,
@@ -92,9 +98,9 @@
             var html = '<br>'+
                         '<table>' +
                           '<thead>' +
-                            '<th width="200">Departamento</th>' +
-                            '<th width="400">Nome</th>' +
-                            '<th width="100">Ramal</th>' +
+                            '<th>Departamento</th>' +
+                            '<th width="300">Nome</th>' +
+                            '<th>Ramal</th>' +
                           '</thead>' +
                           '<tbody>';
 

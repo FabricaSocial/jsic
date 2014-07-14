@@ -1,0 +1,32 @@
+/* TABS-CONTENT */
+
+.tabs-content {
+  margin-bottom: 1.5rem;
+  width: 100%; }
+
+  .tabs-content:before, .tabs-content:after {
+    content: " ";
+    display: table; }
+
+  .tabs-content:after {
+    clear: both; }
+
+  .tabs-content > .content {
+    display: none;
+    float: left;
+    padding: 0.9375em 0;
+    width: 100%; }
+
+    .tabs-content > .content.active {
+      display: block;
+      float: none; }
+
+    .tabs-content > .content.contained {
+      padding: 0.9375em; }
+
+  .tabs-content.vertical {
+    width: 682px;
+    display: block; }
+
+    .tabs-content.vertical > .content {
+      padding: 0 0.9375em; }

@@ -1,5 +1,11 @@
 @import models.pessoa.funcionario.Funcionario
 @import models.pessoa.Etnia
+@import models.pessoa.EstadoCivil
+@import models.pessoa.Nacionalidade
+@import models.pessoa.Naturalidade
+@import models.pessoa.Cidade
+@import models.pessoa.funcionario.Departamento
+@import models.pessoa.funcionario.Cargo
 @(funcionarioConectado : Form[Funcionario])
 
 @main("Atualizar Dados | SIC"){
@@ -7,91 +13,207 @@
     <h2>Atualizar Dados</h2><hr>
   </div>
 
-  <div class="row">
-    <div class="large-2 small-1 columns">
-      <p></p>
-    </div>
-    <div class="large-8 small-10 columns">
-      <p><h3>Dados Pessoais</h3><hr></p>
-
-      @helper.form(action=controllers.pessoa.funcionario.routes.FuncionarioController.alterarDados()){
-        <div class="large-2 small-1 columns">
-          <p></p>
-        </div>
-        <div class="large-8 small-10 columns">
-        @helper.inputText(
-          funcionarioConectado("pessoa.cpf"),
-          'placeholder -> "CPF",
-          '_label -> "CPF:",
-          '_help -> "",
-          '_showErrors -> false,
-          'required -> true
-        )        
-
-        @helper.inputText(
-          funcionarioConectado("pessoa.nome"),
-          'placeholder -> "Nome Completo",
-          '_label -> "Nome:",
-          '_help -> "",
-          '_showErrors -> false,
-          'required -> true
-        )
+  @helper.form(action=controllers.pessoa.funcionario.routes.FuncionarioController.alterarDados()){
+    <div class="row">
+      <div class="large-2 small-1 columns">
+        <p></p>
+      </div>
+      <div class="large-8 small-10 columns">
+        <p><h3>Dados Pessoais</h3><hr></p>
 
         <div class="row">
-          <div class="large-6 small-6 columns">
-            @helper.inputDate(
-              funcionarioConectado("pessoa.data_nascimento"),
-              'placeholder -> "Data de Nascimento",
-              '_label -> "Data de Nascimento:",
-              '_help -> "",
-              '_showErrors -> false,
-              'required -> true
-            )
+          <div class="large-2 small-1 columns">
+            <p></p>
           </div>
-          <div class="large-4 small-4 columns">
+          <div class="large-8 small-10 columns">
             @helper.inputText(
-              funcionarioConectado("pessoa.sexo"),
-              'placeholder -> "Sexo",
-              '_label -> "Sexo:",
-              '_help -> "",
-              '_showErrors -> false,
-              'required -> true
+            funcionarioConectado("pessoa.cpf"),
+            'placeholder -> "CPF",
+            '_label -> "CPF:",
+            '_help -> "",
+            '_showErrors -> false,
+            'required -> true
             )
-          </div>
-          <div class="large-2 small-2 columns">
+
             @helper.inputText(
-              funcionarioConectado("pessoa.filhos"),
-              'type -> "checkbox",
-              '_label -> "Filhos:",
-              '_help -> "",
-              '_showErrors -> false,
-              'required -> true
+            funcionarioConectado("pessoa.nome"),
+            'placeholder -> "Nome Completo",
+            '_label -> "Nome:",
+            '_help -> "",
+            '_showErrors -> false,
+            'required -> true
+            )
+
+            <div class="row">
+              <div class="large-6 small-6 columns">
+                @helper.inputDate(
+                funcionarioConectado("pessoa.data_nascimento"),
+                'placeholder -> "Data de Nascimento",
+                '_label -> "Data de Nascimento:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+              <div class="large-4 small-4 columns">
+                @helper.inputText(
+                funcionarioConectado("pessoa.sexo"),
+                'placeholder -> "Sexo",
+                '_label -> "Sexo:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+              <div class="large-2 small-2 columns">
+                @helper.inputText(
+                funcionarioConectado("pessoa.filhos"),
+                'type -> "checkbox",
+                '_label -> "Filhos:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 small-6 columns">
+                @helper.select(
+                funcionarioConectado("pessoa.etnia"),
+                Etnia.find.all().map{ etnia => etnia.getId().toString() -> etnia.getDescricao() },
+                '_label -> "Etnia"
+                )
+              </div>
+              <div class="large-6 small-6 columns">
+                @helper.select(
+                funcionarioConectado("pessoa.estadoCivil"),
+                EstadoCivil.find.all().map{ estadoCivil => estadoCivil.getId().toString() -> estadoCivil.getDescricao() },
+                '_label -> "Estado Civil"
+                )
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 small-6 columns">
+                @helper.select(
+                funcionarioConectado("pessoa.nacionalidade"),
+                Nacionalidade.find.all().map{ nacionalidade => nacionalidade.getId().toString() -> nacionalidade.getDescricao() },
+                '_label -> "Nacionalidade"
+                )
+              </div>
+              <div class="large-6 small-6 columns">
+                @helper.select(
+                funcionarioConectado("pessoa.naturalidade"),
+                Naturalidade.find.all().map{ naturalidade => naturalidade.getId().toString() -> naturalidade.getCidade().getNome() },
+                '_label -> "Naturalidade:"
+                )
+              </div>
+            </div>
+
+            @helper.inputText(
+            funcionarioConectado("pessoa.endereco.endereco"),
+            '_label -> "Endereço:",
+            '_help -> "",
+            '_showErrors -> false,
+            'required -> true
+            )
+
+            <div class="row">
+              <div class="large-6 small-6 columns">
+                @helper.inputText(
+                funcionarioConectado("pessoa.endereco.bairro"),
+                '_label -> "Bairro:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+              <div class="large-6 small-6 columns">
+                @helper.inputText(
+                funcionarioConectado("pessoa.endereco.cep"),
+                '_label -> "CEP:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+            </div>
+
+            @helper.select(
+            funcionarioConectado("pessoa.endereco.cidade"),
+            Cidade.find.all().map{ cidade => cidade.getId().toString() -> cidade.getNome() },
+            '_label -> "Cidade:"
+            )
+            @helper.inputFile(
+            funcionarioConectado("pessoa.foto"),
+            'type -> "checkbox",
+            '_label -> "Foto:",
+            '_help -> "",
+            '_showErrors -> false,
+            'required -> true
             )
           </div>
+          <div class="large-2 small-1 columns">
+            <p></p>
+          </div>
         </div>
-
-        @helper.select(
-          funcionarioConectado("pessoa.etnia"),
-          Etnia.find.all().map{ etnia => etnia.getId().toString() -> etnia.getDescricao() },
-          '_label -> "Etnia"
-        )
-
-        @helper.inputFile(
-          funcionarioConectado("pessoa.foto"),
-          'type -> "checkbox",
-          '_label -> "Foto:",
-          '_help -> "",
-          '_showErrors -> false,
-          'required -> true
-        )
-        </div>
-        <div class="large-2 small-1 columns">
-          <p></p>
-        </div>
-      }
+      </div>
+      <div class="large-2 small-1">
+        <p></p>
+      </div>
     </div>
-    <div class="large-2 small-1 columns">
-      <p></p>
+    <div class="row">
+      <div class="large-2 small-1 columns">
+        <p></p>
+      </div>
+      <div class="large-8 small-10 columns">
+        <p><h3>Dados Administrativos</h3><hr></p>
+
+        <div class="row">
+          <div class="large-2 small-1 columns">
+            <p></p>
+          </div>
+          <div class="large-8 small-10 columns">
+
+            <div class="row">
+              <div class="large-3 columns">
+                @helper.inputText(
+                funcionarioConectado("matricula"),
+                '_label -> "Matrícula:",
+                '_help -> "",
+                '_showErrors -> false,
+                'required -> true
+                )
+              </div>
+              <div class="large-9 columns">
+                @helper.select(
+                funcionarioConectado("departamento"),
+                Departamento.find.all().map{ departamento => departamento.getId().toString() -> departamento.getDescricao() },
+                '_label -> "Departamento:"
+                )
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="large-6 columns">
+                @helper.select(
+                funcionarioConectado("cargo"),
+                Cargo.find.all().map{ cargo => cargo.getId().toString() -> cargo.getCargoEfetivo() },
+                '_label -> "Cargo:"
+                )
+              </div>
+              <div class="large-6 columns"></div>
+            </div>
+          </div>
+          <div class="large-2 small-1 columns">
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="large-2 small-1">
+        <p></p>
+      </div>
     </div>
-  </div>
+  }
 }
